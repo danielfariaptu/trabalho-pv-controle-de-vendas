@@ -5,6 +5,7 @@
  */
 package tavv.controle.de.vendas;
 
+import Criptografia.BCrypt;
 import Model.ConnectionDataBase;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -22,11 +23,11 @@ import javax.swing.JOptionPane;
 public class Cadastro extends javax.swing.JFrame {
 
     private ConnectionDataBase bd;
+    private BCrypt BCrypt;
     private Arquivo file;
     private PreparedStatement statement;
     private ResultSet resultSet;
     private static MenuPrincipal telaInicial;
-  
             
     public Cadastro() {
         setResizable(false);  
@@ -231,7 +232,26 @@ public class Cadastro extends javax.swing.JFrame {
 					if(!(fieldSenha.getText().equals(fieldSenhaConfirm.getText()))){
 						System.out.println("Senha: " + fieldSenha.getText() + " | Confirmar Senha: " + fieldSenhaConfirm.getText());
 						JOptionPane.showMessageDialog(null, "Os dois campos de senham não combinam!");
+                     
 					} else {
+                                            
+                                              
+                                               String salGerado = BCrypt.gensalt();
+                                               
+                                                System.out.println("O sal gerado foi $" + salGerado + "$");
+
+                                                // Gera a senha hasheada utilizando o sal gerado
+                                                String senhaHasheada = BCrypt.hashpw(fieldSenha.getText(), salGerado);
+                                                
+
+                                                //Atualiza a senha do usuário
+                                                //usuario.setSenha(senhaHasheada);
+
+                                                //Salva no banco
+                                               // adicionaNoBanco(usuario);
+                                               
+                                               JOptionPane.showMessageDialog(null, "SENHA HASHEADA! = "+ senhaHasheada); // VER SE ESTÁ FUNCIONANDO!
+                                          
 						try {
 							if(!bd.getConnection()){
 								JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
@@ -241,7 +261,7 @@ public class Cadastro extends javax.swing.JFrame {
 							String url = "INSERT INTO usuario (nome, senha) VALUES(?,?)";
 							statement = bd.connection.prepareStatement(url);
 							statement.setString(1, fieldNome.getText());
-							statement.setString(2, fieldSenha.getText());
+							statement.setString(2, senhaHasheada);
 							statement.execute();
 							statement.close();
 							bd.close();
