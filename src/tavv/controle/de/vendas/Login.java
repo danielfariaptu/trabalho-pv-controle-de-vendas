@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package tavv.controle.de.vendas;
-
+import Criptografia.BCrypt;
 import Model.ConnectionDataBase;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -12,6 +12,10 @@ import java.net.URL;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 import javax.swing.JOptionPane;
 
@@ -24,11 +28,15 @@ public class Login extends javax.swing.JFrame {
 
     private ConnectionDataBase bd;
     private Arquivo file;
+    private BCrypt BCrypt;
+    private Integer cont = 1;
+    private String senhaHasheada;
+    private Boolean verificaSenha;
     private PreparedStatement statement;
     private ResultSet resultSet;
+    private String senhaResultado;
     private static MenuPrincipal telaInicial;
-  
-            
+    
     public Login() {
         setResizable(false);  
         bd = new ConnectionDataBase();
@@ -43,7 +51,44 @@ public class Login extends javax.swing.JFrame {
         
      
     }
+    
+    private String AutenticaSenha(String nome, String senhaPassada){
+       
+         String senhaDoBanco;
+      
+                        try {
+                                                                    if(!bd.getConnection()){
+                                                                            JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
+                                                                            System.exit(0);
+                                                                    }
 
+                                                                    String url = "SELECT * FROM usuario WHERE nome=?";
+
+
+                                                                    statement = bd.connection.prepareStatement(url);
+                                                                    statement.setString(1, nome);
+
+                                                                    resultSet  = statement.executeQuery();
+
+
+
+                                                                      while(resultSet.next()){  
+                                                                          senhaDoBanco =  resultSet.getString("senha");
+
+
+                                                                          verificaSenha= BCrypt.checkpw(senhaPassada, senhaDoBanco);
+
+                                                                        if (verificaSenha){
+                                                                            return (senhaDoBanco);
+                                                                        }
+                                                                      }
+                        }catch(Exception erro) {
+                                                                        JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
+                        }
+                    
+          return ("SENHA ERRADA");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -225,39 +270,106 @@ public class Login extends javax.swing.JFrame {
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
      				
-        //String strPass = new String(fieldSenha.getPassword()).trim();
-        
+     
+                
+                
+                
+                
         if((fieldNome.getText().trim().equals("")) && (fieldSenha.getText().trim().equals(""))){
 					JOptionPane.showMessageDialog(null, "Verifique se algum campo está vazio!");
 				} else {
-					try {
+            
+            
+                                   senhaResultado = AutenticaSenha(fieldNome.getText(), fieldSenha.getText());
+					
+                                   try {
 						if(!bd.getConnection()){
 							JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
 							System.exit(0);
 						}
-						String url = "SELECT * FROM usuario WHERE nome=? AND senha=?";
+                                                     
+						/*String url = "SELECT * FROM usuario WHERE nome=?";
                                                 
-                                                
-                                                
+                                               
 						statement = bd.connection.prepareStatement(url);
 						statement.setString(1, fieldNome.getText());
                                                 
-						statement.setString(2, fieldSenha.getText());
-						resultSet = statement.executeQuery();
-						if(resultSet.next()){
-							String nome = resultSet.getString("nome");
-							file.escreverArquivo(nome);
-							JOptionPane.showMessageDialog(null, "Usuaro logado com sucesso \n Nome: " + nome);
-							MenuPrincipal mp = new MenuPrincipal ();
-                                                            Login lg = new Login ();
-                                                            lg.dispose();
-							
-						} else {
-							JOptionPane.showMessageDialog(null, "Nenhum usuário com esse username e senha foi encontrado!");
-						}
+                                                resultSet  = statement.executeQuery();
+                                                
+                                                    
+                                                    
+                                                  while(resultSet.next()){  
+                                                      senhaHasheada =  resultSet.getString("senha");
+                                                      
+                                                   
+                                                      verificaSenha= BCrypt.checkpw(fieldSenha.getText(), senhaHasheada);
+                                                      
+                                                    if (verificaSenha){
+                                                        System.out.println("SENHA BATE!");
+                                                    }
+                                                  }
+                                                  */
+                                                
+                                                String userExist = "SELECT * FROM usuario WHERE nome=?";
+                                                
+                                               
+                                                 statement = bd.connection.prepareStatement(userExist);
+						 statement.setString(1, fieldNome.getText());
+                                                
+                                                resultSet  = statement.executeQuery();
+                                                 if(resultSet.next()){
+                                                                    if("SENHA ERRADA".equals(senhaResultado) && !"".equals(fieldSenha.getText())){
+
+                                                                                      if(cont > 2){
+                                                                                                  JOptionPane.showMessageDialog(null, "Senha incorreta! " + cont + " tentativas realizadas!!" );
+                                                                                                    if(cont == 6){
+                                                                                                            JOptionPane.showMessageDialog(JPanel, "Número de tentativas excedidas!! \nFechando a Aplicação!", "Senha Incorreta", JOptionPane.ERROR_MESSAGE);
+                                                                                                            System.exit(0);
+                                                                                                    }
+                                                                                         cont++;
+                                                                                      } 
+                                                                                      else{
+                                                                                         JOptionPane.showMessageDialog(null, "Senha incorreta!");
+                                                                                         cont++;
+                                                                                         
+                                                                                      }
+                                                                     }
+                                                                    else if((fieldSenha.getText().trim().equals(""))){
+                                                                        JOptionPane.showMessageDialog(null, "Verifique o campo de senha!");
+                                                                    }
+                                                                    else{
+
+                                                                    String url2 = "SELECT * FROM usuario WHERE nome=? AND senha=?";
+                                                                            
+
+                                                                   statement = bd.connection.prepareStatement(url2);
+                                                                   statement.setString(1, fieldNome.getText());
+                                                                   statement.setString(2, senhaResultado);
+
+                                                                  resultSet  = statement.executeQuery();
+
+                                                                    if(resultSet.next()){
+
+                                                                                          String nome = resultSet.getString("nome");
+                                                                                          file.escreverArquivo(nome);
+
+                                                                                          JOptionPane.showMessageDialog(null, "Usuario logado com sucesso \n Nome: " + nome);
+                                                                                          MenuPrincipal mp = new MenuPrincipal ();
+                                                                                              Login lg = new Login ();
+                                                                                              lg.dispose();
+
+                                                                                  } 
+                                                                                  
+                                                                    }
+                                                 }else {
+                                                    JOptionPane.showMessageDialog(JPanel, "Nenhum usuário com esse username foi encontrado!", "Usuário Inexistente", JOptionPane.ERROR_MESSAGE);
+                                                    
+                                                 }
 						resultSet.close();
 						statement.close();
 						bd.close();
+                                                
+                                                 
 					} catch(Exception erro) {
 						JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
 					}
@@ -265,6 +377,8 @@ public class Login extends javax.swing.JFrame {
 				}
     }//GEN-LAST:event_btnEntrarActionPerformed
 
+    
+    
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
           Cadastro cad = new Cadastro ();
 		cad.setSize(600, 594);
