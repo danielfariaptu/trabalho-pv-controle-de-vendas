@@ -10,7 +10,7 @@ import Controller.CadastroDAO;
 import javax.swing.JOptionPane;
 
 
-public class Cadastro extends javax.swing.JFrame {
+public class Cadastro extends javax.swing.JFrame{
     
  CadastroDAO cadDAO = new CadastroDAO();
  
@@ -51,8 +51,9 @@ public class Cadastro extends javax.swing.JFrame {
         fieldSenhaConfirm = new javax.swing.JPasswordField();
         labelSenhaConfirm = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Usuário - Sistema Tabajara Atacado e Varejo de Vinhos");
+        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 
         JPanel.setBackground(new java.awt.Color(51, 0, 102));
 
@@ -192,9 +193,7 @@ public class Cadastro extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -224,12 +223,10 @@ public class Cadastro extends javax.swing.JFrame {
                 
                 fecharCad = cadDAO.CadastroUser(fieldNome.getText(), senhaHasheada);
                 
-              if(!fecharCad){
-                  
-              }
-              else{
+              if(fecharCad){
                   this.dispose();
               }
+              
                 
                 
 
@@ -280,7 +277,7 @@ public class Cadastro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-
+                
                 new Login().setVisible(true);
             }
         });

@@ -4,18 +4,20 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
 import Controller.LoginDAO;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
     LoginDAO logDAO = new LoginDAO();
 
-    private String senhaHasheada;
+    private Boolean chamarMenuPrincipal;
 
     private String senhaResultado;
     private static MenuPrincipal telaInicial;
 
     public Login() {
+        
         setResizable(false);
         this.setLocationRelativeTo(null);
         initComponents();
@@ -208,17 +210,31 @@ public class Login extends javax.swing.JFrame {
 
             senhaResultado = logDAO.AutenticaSenha(fieldNome.getText(), fieldSenha.getText());
 
-            logDAO.RealizaLogin(fieldNome.getText(), senhaResultado, fieldSenha.getText());
-
+            chamarMenuPrincipal = logDAO.RealizaLogin(fieldNome.getText(), senhaResultado, fieldSenha.getText());
+            
+            if(chamarMenuPrincipal){
+             MenuPrincipal mp = new MenuPrincipal();
+              	mp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                mp.setLocationRelativeTo(null);
+		mp.setVisible(true);
+             
+             Login lg = new Login();
+             lg.dispose();
+            }
         }
+           
     }//GEN-LAST:event_btnEntrarActionPerformed
 
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+       // new Cadastro().show();
+     
         Cadastro cad = new Cadastro();
-        cad.setSize(600, 594);
         cad.setLocationRelativeTo(null);
         cad.setVisible(true);
+        
+        
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void fieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldSenhaActionPerformed

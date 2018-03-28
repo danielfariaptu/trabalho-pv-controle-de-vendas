@@ -54,7 +54,7 @@ public class LoginDAO {
         return ("SENHA ERRADA");
     }
 
-    public void RealizaLogin(String nome, String senhaResultado, String senhaAtual) {
+    public Boolean RealizaLogin(String nome, String senhaResultado, String senhaAtual) {
 
         try {
             if (!bd.getConnection()) {
@@ -101,15 +101,15 @@ public class LoginDAO {
 
                         JOptionPane.showMessageDialog(null, "Usuario logado com sucesso \n Nome: " + name);
 
-                        MenuPrincipal mp = new MenuPrincipal();
-                        Login lg = new Login();
-                        lg.dispose();
+                        return (true);
+                       
 
                     }
 
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Nenhum usuário com esse username foi encontrado!", "Usuário Inexistente", JOptionPane.ERROR_MESSAGE);
+                return (false);
 
             }
             resultSet.close();
@@ -118,7 +118,9 @@ public class LoginDAO {
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
+           
         }
+        return(false);
     }
 
 }
