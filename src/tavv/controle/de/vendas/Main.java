@@ -9,7 +9,7 @@ public class Main {
  public static void main(String[] args) {
          Login lg = new Login ();
               	lg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		lg.setSize(600, 550);
+		//lg.setSize(988, 661);
                 lg.setLocationRelativeTo(null);
 		lg.setVisible(true);
  

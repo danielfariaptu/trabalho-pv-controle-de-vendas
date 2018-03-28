@@ -7,14 +7,15 @@ package tavv.controle.de.vendas;
 
 import Criptografia.BCrypt;
 import Controller.ConnectionDataBase;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -28,28 +29,25 @@ public class Cadastro extends javax.swing.JFrame {
     private PreparedStatement statement;
     private ResultSet resultSet;
     private static MenuPrincipal telaInicial;
-            
+
     public Cadastro() {
-        setResizable(false);  
+        setResizable(false);
         bd = new ConnectionDataBase();
-	file = new Arquivo();
+        file = new Arquivo();
         this.setLocationRelativeTo(null);
         initComponents();
-         URL caminhoIcone = getClass().getResource("/icons/icone.png");
+        URL caminhoIcone = getClass().getResource("/icons/icone.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
-        
-        
-        
-     
+
     }
-    
-    private void limpaCampos(){
-		fieldNome.setText("");
-		fieldSenha.setText("");
-		fieldSenhaConfirm.setText("");
-	}
-    
+
+    private void limpaCampos() {
+        fieldNome.setText("");
+        fieldSenha.setText("");
+        fieldSenhaConfirm.setText("");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -225,55 +223,57 @@ public class Cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldNomeActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-         		
-				if((fieldNome.getText().trim().equals("")) || (fieldSenha.getText().trim().equals("")) || (fieldSenhaConfirm.getText().trim().equals(""))){
-						JOptionPane.showMessageDialog(null, "Verifique se algum campo está vazio!");
-				} else {
-					if(!(fieldSenha.getText().equals(fieldSenhaConfirm.getText()))){
-						System.out.println("Senha: " + fieldSenha.getText() + " | Confirmar Senha: " + fieldSenhaConfirm.getText());
-						JOptionPane.showMessageDialog(null, "Os dois campos de senham não combinam!");
-                     
-					} else {
-                                            
-                                              
-                                               String salGerado = BCrypt.gensalt();
-                                               
-                                                System.out.println("O sal gerado foi $" + salGerado + "$");
 
-                                                // Gera a senha hasheada utilizando o sal gerado
-                                                String senhaHasheada = BCrypt.hashpw(fieldSenha.getText(), salGerado);
-                                                
+        if ((fieldNome.getText().trim().equals("")) || (fieldSenha.getText().trim().equals("")) || (fieldSenhaConfirm.getText().trim().equals(""))) {
+            JOptionPane.showMessageDialog(null, "Verifique se algum campo está vazio!");
+        } else {
+            if (!(fieldSenha.getText().equals(fieldSenhaConfirm.getText()))) {
+                System.out.println("Senha: " + fieldSenha.getText() + " | Confirmar Senha: " + fieldSenhaConfirm.getText());
+                JOptionPane.showMessageDialog(null, "Os dois campos de senham não combinam!");
 
-                                                //Atualiza a senha do usuário
-                                                //usuario.setSenha(senhaHasheada);
+            } else {
 
-                                                //Salva no banco
-                                               // adicionaNoBanco(usuario);
-                                               
-                                               JOptionPane.showMessageDialog(null, "SENHA HASHEADA! = "+ senhaHasheada); // VER SE ESTÁ FUNCIONANDO!
-                                          
-						try {
-							if(!bd.getConnection()){
-								JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
-								System.exit(0);
-							}
+                String salGerado = BCrypt.gensalt();
 
-							String url = "INSERT INTO usuario (nome, senha) VALUES(?,?)";
-							statement = bd.connection.prepareStatement(url);
-							statement.setString(1, fieldNome.getText());
-							statement.setString(2, senhaHasheada);
-							statement.execute();
-							statement.close();
-							bd.close();
-							JOptionPane.showMessageDialog(null, "Usuário Cadastrado com sucesso!");
-							//limpaCampos();
-							this.dispose();
-						} catch(Exception erro) {
-							JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());
-						}
-					}
-					
-				}
+                System.out.println("O sal gerado foi $" + salGerado + "$");
+
+                // Gera a senha hasheada utilizando o sal gerado
+                String senhaHasheada = BCrypt.hashpw(fieldSenha.getText(), salGerado);
+
+                //Atualiza a senha do usuário
+                //usuario.setSenha(senhaHasheada);
+                //Salva no banco
+                // adicionaNoBanco(usuario);
+                JOptionPane.showMessageDialog(null, "SENHA HASHEADA! = " + senhaHasheada); // VER SE ESTÁ FUNCIONANDO!
+
+                try {
+                    if (!bd.getConnection()) {
+                        JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
+                        System.exit(0);
+                    }
+
+                    String url = "INSERT INTO usuario (nome, senha) VALUES(?,?)";
+                    statement = bd.connection.prepareStatement(url);
+                    statement.setString(1, fieldNome.getText());
+                    statement.setString(2, senhaHasheada);
+                    statement.execute();
+                    statement.close();
+                    bd.close();
+                    JOptionPane.showMessageDialog(null, "Usuário Cadastrado com sucesso!");
+                    //limpaCampos();
+                    this.dispose();
+                } catch (Exception erro) {
+                    
+                    JOptionPane.showMessageDialog(JPanel, "Usuário com o mesmo username foi encontrado! \nUsuário: " + fieldNome.getText(), "Usuário Existente", JOptionPane.ERROR_MESSAGE);
+                                                    
+                    //erro.toString()
+                } 
+                
+                
+
+            }
+
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void fieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldSenhaActionPerformed
@@ -281,7 +281,7 @@ public class Cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_fieldSenhaActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void fieldSenhaConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldSenhaConfirmActionPerformed
@@ -318,7 +318,7 @@ public class Cadastro extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
                 new Login().setVisible(true);
             }
         });
