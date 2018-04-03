@@ -49,7 +49,7 @@ public class AlterarProduto extends javax.swing.JDialog {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("CADASTRO DE PRODUTO");
+        jLabel1.setText("ALTERAÇÃO DE PRODUTO");
         CadastroProduto.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 350, 43));
 
         tfNome.setNextFocusableComponent(tfPreco);
