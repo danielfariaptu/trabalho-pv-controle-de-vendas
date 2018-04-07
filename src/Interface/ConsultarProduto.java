@@ -20,6 +20,7 @@ public class ConsultarProduto extends javax.swing.JDialog {
         tbDadosOnShow();
     }
 
+   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -206,6 +207,7 @@ public class ConsultarProduto extends javax.swing.JDialog {
         tabelaConsulta.isCellEditable(tabelaConsulta.getSelectedRow(), tabelaConsulta.getSelectedColumn());
     }
 
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
