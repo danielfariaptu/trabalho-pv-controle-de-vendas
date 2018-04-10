@@ -1,7 +1,7 @@
 package Interface;
 
 import Controle.GerenciaEndereco;
-import Entidades.Cliente;
+import Model.Cliente;
 import Interface.Validador;
 import java.awt.AWTKeyStroke;
 import java.awt.Color;
@@ -10,13 +10,13 @@ import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
 
-public class CadastroEndereco extends javax.swing.JDialog {
+public class AdicionarEndereco extends javax.swing.JDialog {
 
     HashSet backup = new HashSet(this.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
     HashSet teclaEnter = (HashSet) backup.clone();
     GerenciaEndereco ge;
 
-    public CadastroEndereco(java.awt.Frame parent, boolean modal, GerenciaEndereco ge) {
+    public AdicionarEndereco(java.awt.Frame parent, boolean modal, GerenciaEndereco ge) {
         super(parent, modal);
         initComponents();
         this.ge = ge;
@@ -31,7 +31,6 @@ public class CadastroEndereco extends javax.swing.JDialog {
         tfLogradouro = new javax.swing.JTextField();
         tfMunicipio = new javax.swing.JTextField();
         tfNumero = new javax.swing.JTextField();
-        tfEstado = new javax.swing.JTextField();
         tfComplemento = new javax.swing.JTextField();
         tfTipoEndereco = new javax.swing.JTextField();
         tfBairro = new javax.swing.JTextField();
@@ -47,6 +46,9 @@ public class CadastroEndereco extends javax.swing.JDialog {
         lbAviso = new javax.swing.JLabel();
         btnLimpar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -63,14 +65,13 @@ public class CadastroEndereco extends javax.swing.JDialog {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("CADASTRO DE ENDEREÇO");
+        jLabel1.setText("ADICIONAR ENDEREÇO");
         CadastroCliente.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 360, 43));
 
         tfLogradouro.setNextFocusableComponent(tfNumero);
-        CadastroCliente.add(tfLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 300, 29));
+        CadastroCliente.add(tfLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 300, 29));
 
-        tfMunicipio.setNextFocusableComponent(tfEstado);
-        CadastroCliente.add(tfMunicipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 300, 29));
+        CadastroCliente.add(tfMunicipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 300, 29));
 
         tfNumero.setNextFocusableComponent(tfComplemento);
         tfNumero.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -83,67 +84,62 @@ public class CadastroEndereco extends javax.swing.JDialog {
                 tfNumeroKeyTyped(evt);
             }
         });
-        CadastroCliente.add(tfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 300, 29));
-
-        tfEstado.setNextFocusableComponent(tfTipoEndereco);
-        CadastroCliente.add(tfEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 300, 29));
+        CadastroCliente.add(tfNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 300, 29));
 
         tfComplemento.setNextFocusableComponent(tfBairro);
-        CadastroCliente.add(tfComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 300, 29));
-
-        CadastroCliente.add(tfTipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 300, 29));
+        CadastroCliente.add(tfComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 300, 29));
+        CadastroCliente.add(tfTipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 300, 29));
 
         tfBairro.setNextFocusableComponent(tfMunicipio);
-        CadastroCliente.add(tfBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 300, 29));
+        CadastroCliente.add(tfBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 300, 29));
 
         lbLogradouro.setDisplayedMnemonic('l');
         lbLogradouro.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbLogradouro.setForeground(new java.awt.Color(255, 255, 255));
         lbLogradouro.setLabelFor(lbLogradouro);
-        lbLogradouro.setText(" LOGRADOURO:");
-        CadastroCliente.add(lbLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+        lbLogradouro.setText(" LOGRADOURO*");
+        CadastroCliente.add(lbLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
         lbMunicipio.setDisplayedMnemonic('m');
         lbMunicipio.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbMunicipio.setForeground(new java.awt.Color(255, 255, 255));
         lbMunicipio.setLabelFor(tfMunicipio);
-        lbMunicipio.setText(" MUNICÍPIO:");
-        CadastroCliente.add(lbMunicipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, -1, 20));
+        lbMunicipio.setText(" MUNICÍPIO*");
+        CadastroCliente.add(lbMunicipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, 20));
 
         lbNumero.setDisplayedMnemonic('n');
         lbNumero.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbNumero.setForeground(new java.awt.Color(255, 255, 255));
         lbNumero.setLabelFor(tfNumero);
-        lbNumero.setText(" NÚMERO:");
-        CadastroCliente.add(lbNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
+        lbNumero.setText(" NÚMERO*");
+        CadastroCliente.add(lbNumero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
 
         jbEstado.setDisplayedMnemonic('e');
         jbEstado.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jbEstado.setForeground(new java.awt.Color(255, 255, 255));
-        jbEstado.setLabelFor(tfEstado);
-        jbEstado.setText(" ESTADO:");
-        CadastroCliente.add(jbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 130, -1, -1));
+        jbEstado.setText(" ESTADO*");
+        CadastroCliente.add(jbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, -1, -1));
 
         lbComplemento.setDisplayedMnemonic('c');
         lbComplemento.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbComplemento.setForeground(new java.awt.Color(255, 255, 255));
         lbComplemento.setLabelFor(tfComplemento);
         lbComplemento.setText("COMPLEMENTO:");
-        CadastroCliente.add(lbComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, -1));
+        CadastroCliente.add(lbComplemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         lbTipoEndereco.setDisplayedMnemonic('t');
         lbTipoEndereco.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbTipoEndereco.setForeground(new java.awt.Color(255, 255, 255));
         lbTipoEndereco.setLabelFor(tfTipoEndereco);
-        lbTipoEndereco.setText("TIPO DE ENDEREÇO:");
-        CadastroCliente.add(lbTipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
+        lbTipoEndereco.setText(" TIPO DE ENDEREÇO*");
+        CadastroCliente.add(lbTipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, -1, -1));
 
         jLabel9.setDisplayedMnemonic('b');
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setLabelFor(tfBairro);
-        jLabel9.setText(" BAIRRO:");
-        CadastroCliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, -1, -1));
+        jLabel9.setText(" BAIRRO*");
+        CadastroCliente.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, -1));
 
         btnConfirmar.setBackground(new java.awt.Color(102, 102, 102));
         btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhoedwar/imagens/confirmar_1.png"))); // NOI18N
@@ -158,7 +154,7 @@ public class CadastroEndereco extends javax.swing.JDialog {
                 btnConfirmarKeyPressed(evt);
             }
         });
-        CadastroCliente.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, 140, 60));
+        CadastroCliente.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 140, 60));
 
         btnCancelar.setBackground(new java.awt.Color(102, 102, 102));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhoedwar/imagens/excluir.png"))); // NOI18N
@@ -168,10 +164,11 @@ public class CadastroEndereco extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
-        CadastroCliente.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, 140, 60));
+        CadastroCliente.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 140, 60));
 
+        lbAviso.setForeground(new java.awt.Color(255, 255, 255));
         lbAviso.setText("Os campos marcados com * são obrigatórios.");
-        CadastroCliente.add(lbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
+        CadastroCliente.add(lbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, -1, -1));
 
         btnLimpar.setBackground(new java.awt.Color(102, 102, 102));
         btnLimpar.setText("Limpar");
@@ -185,7 +182,7 @@ public class CadastroEndereco extends javax.swing.JDialog {
                 btnLimparKeyPressed(evt);
             }
         });
-        CadastroCliente.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 340, 140, 60));
+        CadastroCliente.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 410, 140, 60));
 
         btnNovo.setBackground(new java.awt.Color(102, 102, 102));
         btnNovo.setText("Novo");
@@ -199,9 +196,25 @@ public class CadastroEndereco extends javax.swing.JDialog {
                 btnNovoKeyTyped(evt);
             }
         });
-        CadastroCliente.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, 140, 60));
+        CadastroCliente.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 140, 60));
 
-        getContentPane().add(CadastroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 450));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        CadastroCliente.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, 300, -1));
+
+        jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("CEP*");
+        CadastroCliente.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
+
+        jComboBox1.setMaximumRowCount(3);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CadastroCliente.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 160, -1));
+
+        getContentPane().add(CadastroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 880, 520));
 
         pack();
         setLocationRelativeTo(null);
@@ -315,6 +328,10 @@ public class CadastroEndereco extends javax.swing.JDialog {
         tratarNumeros(evt);
     }//GEN-LAST:event_tfNumeroKeyTyped
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     public void limpaCampos() {
         tfLogradouro.setText(null);
         tfNumero.setText(null);
@@ -360,8 +377,11 @@ public class CadastroEndereco extends javax.swing.JDialog {
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel jbEstado;
     private javax.swing.JLabel lbAviso;
     private javax.swing.JLabel lbComplemento;
@@ -371,7 +391,6 @@ public class CadastroEndereco extends javax.swing.JDialog {
     private javax.swing.JLabel lbTipoEndereco;
     private javax.swing.JTextField tfBairro;
     private javax.swing.JTextField tfComplemento;
-    private javax.swing.JTextField tfEstado;
     private javax.swing.JTextField tfLogradouro;
     private javax.swing.JTextField tfMunicipio;
     private javax.swing.JTextField tfNumero;
