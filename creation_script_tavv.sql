@@ -65,6 +65,7 @@ WITHOUT OIDS;
 CREATE TABLE "endereco" (
 "endereco_id" serial NOT NULL,
 "logradouro" varchar(50) NOT NULL,
+"cep" varchar(15) NOT NULL,
 "numero" integer NOT NULL,
 "complemento" varchar(20) NOT NULL,
 "bairro" varchar(45) NOT NULL,

@@ -1,4 +1,4 @@
-package Interface;
+/*package Interface;
 
 import Controle.GerenciaEndereco;
 import Model.Cliente;
@@ -397,3 +397,4 @@ public class AdicionarEndereco extends javax.swing.JDialog {
     private javax.swing.JTextField tfTipoEndereco;
     // End of variables declaration//GEN-END:variables
 }
+*/

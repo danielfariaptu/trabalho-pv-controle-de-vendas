@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
 import Controller.LoginDAO;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -17,7 +18,7 @@ public class Login extends javax.swing.JFrame {
     private static MenuPrincipal telaInicial;
 
     public Login() {
-        
+       
         setResizable(false);
         this.setLocationRelativeTo(null);
         initComponents();
@@ -44,7 +45,7 @@ public class Login extends javax.swing.JFrame {
         btnSair = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Login - Sistema Tabajara Atacado e Varejo de Vinhos");
 
         JPanel.setBackground(new java.awt.Color(51, 0, 102));
@@ -229,10 +230,20 @@ public class Login extends javax.swing.JFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
        // new Cadastro().show();
      
-        Cadastro cad = new Cadastro();
-        cad.setLocationRelativeTo(null);
-        cad.setVisible(true);
+        //Cadastro cad = new Cadastro();
+        //cad.setLocationRelativeTo(null);
+        //cad.setVisible(true);
         
+        Cadastro dialog = new Cadastro(new javax.swing.JFrame(), true);
+        dialog.setLocationRelativeTo(null);
+		dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		dialog.setVisible(true);
+                
         
         
     }//GEN-LAST:event_btnCadastrarActionPerformed

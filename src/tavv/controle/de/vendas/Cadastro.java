@@ -10,7 +10,7 @@ import Controller.CadastroDAO;
 import javax.swing.JOptionPane;
 
 
-public class Cadastro extends javax.swing.JFrame{
+public class Cadastro extends javax.swing.JDialog{
     
  CadastroDAO cadDAO = new CadastroDAO();
  
@@ -18,7 +18,8 @@ public class Cadastro extends javax.swing.JFrame{
     private Boolean fecharCad;
    
     
-    public Cadastro() {
+    public Cadastro(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         setResizable(false);
       
         this.setLocationRelativeTo(null);
@@ -51,9 +52,9 @@ public class Cadastro extends javax.swing.JFrame{
         fieldSenhaConfirm = new javax.swing.JPasswordField();
         labelSenhaConfirm = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Cadastro de Usuário - Sistema Tabajara Atacado e Varejo de Vinhos");
-        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        setModal(true);
 
         JPanel.setBackground(new java.awt.Color(51, 0, 102));
 
@@ -216,9 +217,7 @@ public class Cadastro extends javax.swing.JFrame{
 
                 String salGerado = BCrypt.gensalt();
 
-                System.out.println("O sal gerado foi $" + salGerado + "$");
-
-               
+                              
                 String senhaHasheada = BCrypt.hashpw(fieldSenha.getText(), salGerado);
                 
                 fecharCad = cadDAO.CadastroUser(fieldNome.getText(), senhaHasheada);
@@ -276,11 +275,17 @@ public class Cadastro extends javax.swing.JFrame{
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-                new Login().setVisible(true);
-            }
-        });
+	public void run() {
+		Cadastro dialog = new Cadastro(new javax.swing.JFrame(), true);
+		dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		dialog.setVisible(true);
+	}
+});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
