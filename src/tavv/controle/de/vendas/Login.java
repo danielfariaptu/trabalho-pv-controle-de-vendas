@@ -217,12 +217,8 @@ public class Login extends javax.swing.JFrame {
              MenuPrincipal mp = new MenuPrincipal();
               	mp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 mp.setLocationRelativeTo(null);
-                
-                
-                dispose();
-             
 		mp.setVisible(true);
-             
+                dispose();
              
             }
         }
