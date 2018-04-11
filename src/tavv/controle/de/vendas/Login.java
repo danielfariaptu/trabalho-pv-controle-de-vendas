@@ -45,7 +45,7 @@ public class Login extends javax.swing.JFrame {
         btnSair = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - Sistema Tabajara Atacado e Varejo de Vinhos");
 
         JPanel.setBackground(new java.awt.Color(51, 0, 102));
@@ -217,10 +217,13 @@ public class Login extends javax.swing.JFrame {
              MenuPrincipal mp = new MenuPrincipal();
               	mp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 mp.setLocationRelativeTo(null);
+                
+                
+                dispose();
+             
 		mp.setVisible(true);
              
-             Login lg = new Login();
-             lg.dispose();
+             
             }
         }
            
