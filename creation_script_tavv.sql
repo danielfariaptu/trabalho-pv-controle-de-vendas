@@ -45,6 +45,7 @@ CREATE TABLE "produto" (
 "produto_id" serial NOT NULL,
 "nome" varchar(45) NOT NULL,
 "preco" double precision NOT NULL,
+"estoque" integer NOT NULL,
 "codigo_de_barras" varchar(45) NOT NULL,
 "tipo_de_uva" varchar(45) NOT NULL,
 "pais_de_origem" varchar(45) NOT NULL,
