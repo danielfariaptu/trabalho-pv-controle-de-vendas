@@ -8,14 +8,10 @@ public class Main {
          Login lg = new Login ();
               	lg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 lg.setLocationRelativeTo(null);
+                lg.setSize(640, 516);
 		lg.setVisible(true);
  
     }
- 
-
-  
-  
- 
 
 } 
 

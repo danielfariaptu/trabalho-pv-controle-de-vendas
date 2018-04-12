@@ -97,9 +97,9 @@ public class LoginDAO {
 
                     if (resultSet.next()) {
 
-                        String name = resultSet.getString("nome");
+                        //String name = resultSet.getString("nome");
 
-                        JOptionPane.showMessageDialog(null, "Usuario logado com sucesso \n Nome: " + name);
+                        //JOptionPane.showMessageDialog(null, "Usuario logado com sucesso \n Nome: " + name);
 
                         return (true);
                        

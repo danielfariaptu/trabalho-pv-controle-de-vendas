@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
 import Controller.LoginDAO;
+import java.awt.Color;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -11,7 +12,8 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     LoginDAO logDAO = new LoginDAO();
-
+   
+       
     private Boolean chamarMenuPrincipal;
 
     private String senhaResultado;
@@ -20,9 +22,9 @@ public class Login extends javax.swing.JFrame {
     public Login() {
        
         setResizable(false);
-        this.setLocationRelativeTo(null);
         initComponents();
-
+        overlay.setVisible(false);
+        overlay.setBackground(new Color(51,34,94,80));
         URL caminhoIcone = getClass().getResource("/icons/icone.png");
         Image iconeTitulo = Toolkit.getDefaultToolkit().getImage(caminhoIcone);
         this.setIconImage(iconeTitulo);
@@ -33,6 +35,7 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        overlay = new javax.swing.JPanel();
         JPanel = new javax.swing.JPanel();
         fieldNome = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
@@ -47,6 +50,14 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - Sistema Tabajara Atacado e Varejo de Vinhos");
+        setPreferredSize(new java.awt.Dimension(640, 516));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        overlay.setBackground(new java.awt.Color(51, 34, 94));
+        overlay.setPreferredSize(new java.awt.Dimension(640, 487));
+        overlay.setRequestFocusEnabled(false);
+        overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 640, 500));
 
         JPanel.setBackground(new java.awt.Color(51, 0, 102));
 
@@ -114,6 +125,7 @@ public class Login extends javax.swing.JFrame {
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Exit.png"))); // NOI18N
         btnSair.setText("SAIR");
         btnSair.setBorder(null);
+        btnSair.setFocusPainted(false);
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSairActionPerformed(evt);
@@ -125,6 +137,7 @@ public class Login extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/black_info.png"))); // NOI18N
         jButton1.setText("INFO");
         jButton1.setBorder(null);
+        jButton1.setFocusPainted(false);
         jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,16 +201,7 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(JPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(JPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -234,17 +238,13 @@ public class Login extends javax.swing.JFrame {
         //Cadastro cad = new Cadastro();
         //cad.setLocationRelativeTo(null);
         //cad.setVisible(true);
+       
         
-        Cadastro dialog = new Cadastro(new javax.swing.JFrame(), true);
+        Cadastro dialog = new Cadastro(new javax.swing.JDialog(), true);
         dialog.setLocationRelativeTo(null);
-		dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			}
-		});
-		dialog.setVisible(true);
-                
+        overlay.setVisible(true);
+	dialog.setVisible(true);
+        overlay.setVisible(false);
         
         
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -283,6 +283,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel labelLogin;
     private javax.swing.JLabel labelSenha;
     private javax.swing.JLabel labelUsuario;
+    private javax.swing.JPanel overlay;
     // End of variables declaration//GEN-END:variables
 
 }
