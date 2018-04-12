@@ -11,16 +11,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
      
     public MenuPrincipal() {
        
-        setResizable(false);
+        
         initComponents();
+        setResizable(false);
         setLocationRelativeTo(null);
         setSize(1280, 800);
 
-        
+        PainelCliente.setVisible(false);
         Navegation.setBackground(new Color(50,50,80,111));
         
-        PainelCliente.setVisible(false);
-       botaoPainelCli.setBackground(new Color(93,18,116,112));// cor normal
+       
+       botaoPainelCli.setBackground(new Color(93,18,116,111));// cor normal
        
         
         PainelCliente.setBackground(new Color(50,50,80,111));
@@ -105,7 +106,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(botaoPainelCliLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         botaoPainelEnd.setBackground(new java.awt.Color(51, 0, 153));
@@ -388,7 +389,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(botaoPainelProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoPainelLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(401, Short.MAX_VALUE))
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
         getContentPane().add(Navegation, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 280, 960));
@@ -445,10 +446,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CliIncluir.setLayout(CliIncluirLayout);
         CliIncluirLayout.setHorizontalGroup(
             CliIncluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CliIncluirLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CliIncluirLayout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(57, 57, 57))
         );
         CliIncluirLayout.setVerticalGroup(
             CliIncluirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,9 +517,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         CliRemoverLayout.setHorizontalGroup(
             CliRemoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CliRemoverLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addGap(42, 42, 42))
+                .addGap(44, 44, 44))
         );
         CliRemoverLayout.setVerticalGroup(
             CliRemoverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -576,31 +577,43 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoPainelCliMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelCliMouseEntered
-         botaoPainelCli.setBackground(new Color(18,0,43,120));
+         
+        botaoPainelCli.setBackground(new Color(18,0,43));
     }//GEN-LAST:event_botaoPainelCliMouseEntered
 
     private void botaoPainelCliMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelCliMouseExited
-         botaoPainelCli.setBackground(new Color(93,18,116,120));
+         
+        botaoPainelCli.setBackground(new Color(93,18,116));
     }//GEN-LAST:event_botaoPainelCliMouseExited
 
     private void CliAlterarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CliAlterarMouseEntered
+        
         CliAlterar.setBackground(new Color(83,118,116));
+        
     }//GEN-LAST:event_CliAlterarMouseEntered
 
     private void CliAlterarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CliAlterarMouseExited
+       
         CliAlterar.setBackground(new Color(93,18,116));
+         
     }//GEN-LAST:event_CliAlterarMouseExited
 
     private void CliIncluirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CliIncluirMouseEntered
-       CliIncluir.setBackground(new Color(83,118,116,80));
+       
+        CliIncluir.setBackground(new Color(83,118,116));
+       
     }//GEN-LAST:event_CliIncluirMouseEntered
 
     private void CliIncluirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CliIncluirMouseExited
-       CliIncluir.setBackground(new Color(93,18,116,80));
+      
+        CliIncluir.setBackground(new Color(93,18,116,80));
+       
     }//GEN-LAST:event_CliIncluirMouseExited
 
     private void CliRemoverMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CliRemoverMouseEntered
+        
         CliRemover.setBackground(new Color(83,118,116));
+        
     }//GEN-LAST:event_CliRemoverMouseEntered
 
     private void CliRemoverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CliRemoverMouseExited
@@ -656,11 +669,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoPainelProdMouseExited
 
     private void botaoPainelLogOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelLogOutMouseEntered
-        botaoPainelLogOut.setBackground(new Color(77,46,79,80));
+        botaoPainelLogOut.setBackground(new Color(77,46,79));
     }//GEN-LAST:event_botaoPainelLogOutMouseEntered
 
     private void botaoPainelLogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelLogOutMouseExited
-        botaoPainelLogOut.setBackground(new Color(0,0,0,80));
+        botaoPainelLogOut.setBackground(new Color(43, 17, 68));
     }//GEN-LAST:event_botaoPainelLogOutMouseExited
 
     private void botaoPainelCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelCliMouseClicked
@@ -736,12 +749,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel botaoPainelCompra;
     private javax.swing.JPanel botaoPainelEnd;
     private javax.swing.JPanel botaoPainelFat;
-    private javax.swing.JPanel botaoPainelFat2;
     private javax.swing.JPanel botaoPainelLogOut;
     private javax.swing.JPanel botaoPainelPag;
     private javax.swing.JPanel botaoPainelProd;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;

@@ -66,6 +66,7 @@ public class Login extends javax.swing.JFrame {
         btnCadastrar.setText("Cadastrar-se");
         btnCadastrar.setBorder(null);
         btnCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCadastrar.setFocusable(false);
         btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarActionPerformed(evt);
@@ -77,6 +78,7 @@ public class Login extends javax.swing.JFrame {
         btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/login.png"))); // NOI18N
         btnEntrar.setText("Entrar");
         btnEntrar.setBorder(null);
+        btnEntrar.setFocusable(false);
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
@@ -123,6 +125,7 @@ public class Login extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/black_info.png"))); // NOI18N
         jButton1.setText("INFO");
         jButton1.setBorder(null);
+        jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -215,10 +218,9 @@ public class Login extends javax.swing.JFrame {
             
             if(chamarMenuPrincipal){
              MenuPrincipal mp = new MenuPrincipal();
-              	mp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 mp.setLocationRelativeTo(null);
 		mp.setVisible(true);
-                dispose();
+                this.dispose();
              
             }
         }
