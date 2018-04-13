@@ -5,6 +5,8 @@
  */
 package Interface;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author danie
@@ -28,6 +30,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         closeIcon = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -47,27 +50,27 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jTF_Logradouro = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        jTF_numero = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTF_Complemento = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        jTF_Bairro = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTF_Municipio = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        jTextField11 = new javax.swing.JTextField();
-        jCB_Uf = new javax.swing.JComboBox<>();
+        jTF_cep = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLblAddEndereco = new javax.swing.JLabel();
+        jBtn_Salvar = new javax.swing.JButton();
+        jCBoxUf = new javax.swing.JComboBox<>();
+        jTF_TipoEndereco = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(51, 0, 102));
+        jPanel1.setBackground(new java.awt.Color(41, 30, 35));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true));
         jPanel1.setForeground(new java.awt.Color(204, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -86,23 +89,37 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jLabel1.setText("CADASTRO DE CLIENTE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 230, -1));
 
-        jPanel2.setBackground(new java.awt.Color(51, 0, 102));
+        jPanel2.setBackground(new java.awt.Color(41, 30, 35));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tipo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 16), new java.awt.Color(255, 255, 255))); // NOI18N
         jPanel2.setLayout(null);
 
+        jRb_Pfisica.setBackground(new java.awt.Color(41, 30, 35));
+        buttonGroup1.add(jRb_Pfisica);
         jRb_Pfisica.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
         jRb_Pfisica.setForeground(new java.awt.Color(255, 255, 255));
         jRb_Pfisica.setMnemonic('F');
         jRb_Pfisica.setText("Pessoa Fisica");
+        jRb_Pfisica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRb_PfisicaActionPerformed(evt);
+            }
+        });
         jPanel2.add(jRb_Pfisica);
-        jRb_Pfisica.setBounds(18, 33, 127, 29);
+        jRb_Pfisica.setBounds(18, 33, 119, 24);
 
+        jRbPessoaJuridica.setBackground(new java.awt.Color(41, 30, 35));
+        buttonGroup1.add(jRbPessoaJuridica);
         jRbPessoaJuridica.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jRbPessoaJuridica.setForeground(new java.awt.Color(255, 255, 255));
         jRbPessoaJuridica.setMnemonic('J');
         jRbPessoaJuridica.setText("Pessoa Juridica");
+        jRbPessoaJuridica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRbPessoaJuridicaActionPerformed(evt);
+            }
+        });
         jPanel2.add(jRbPessoaJuridica);
-        jRbPessoaJuridica.setBounds(208, 33, 120, 30);
+        jRbPessoaJuridica.setBounds(208, 33, 130, 30);
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 690, 80));
 
@@ -110,79 +127,79 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nome*:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 60, 17));
+
+        jTf_Nome.setEnabled(false);
         jPanel1.add(jTf_Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 320, 30));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CPF*:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+
+        jTF_cpf.setEnabled(false);
         jPanel1.add(jTF_cpf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 320, 30));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nome Fantasia*:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 120, -1));
+
+        jTF_NomeFantasia.setEnabled(false);
         jPanel1.add(jTF_NomeFantasia, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 300, 30));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("CNPJ*:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, -1, -1));
+
+        jTF_cnpj.setEnabled(false);
         jPanel1.add(jTF_cnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 300, 30));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Limite de Credito*:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 140, -1));
+
+        jTF_LimiteCredito.setEnabled(false);
         jPanel1.add(jTF_LimiteCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 210, 30));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Logradouro*:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 100, -1));
 
-        jTF_Logradouro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTF_LogradouroActionPerformed(evt);
-            }
-        });
+        jTF_Logradouro.setEnabled(false);
         jPanel1.add(jTF_Logradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 430, 30));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Numero*:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 340, 80, 20));
-        jPanel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 190, 30));
+
+        jTF_numero.setEnabled(false);
+        jPanel1.add(jTF_numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 360, 190, 30));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Complemento:");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 110, -1));
+
+        jTF_Complemento.setEnabled(false);
         jPanel1.add(jTF_Complemento, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 430, 30));
 
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Bairro*:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, -1, -1));
 
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 190, 30));
+        jTF_Bairro.setEnabled(false);
+        jPanel1.add(jTF_Bairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 420, 190, 30));
 
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Municipio*:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 80, -1));
 
-        jTF_Municipio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTF_MunicipioActionPerformed(evt);
-            }
-        });
+        jTF_Municipio.setEnabled(false);
         jPanel1.add(jTF_Municipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 330, 30));
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("CEP*:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 57, -1));
-        jPanel1.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 190, 30));
 
-        jCB_Uf.setMaximumRowCount(3);
-        jCB_Uf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jCB_Uf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 130, 30));
+        jTF_cep.setEnabled(false);
+        jPanel1.add(jTF_cep, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 190, 30));
 
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("UF*:");
@@ -191,39 +208,54 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Tipo de endereço*:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 520, 140, -1));
-        jPanel1.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 540, 190, 30));
 
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Campos \"*\" sao obrigatorios");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 550, 200, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 200, -1));
 
-        jLabel16.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
-        jLabel16.setText("Adicionar mais endereço");
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLblAddEndereco.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
+        jLblAddEndereco.setForeground(new java.awt.Color(255, 255, 255));
+        jLblAddEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
+        jLblAddEndereco.setText("Adicionar mais endereço");
+        jLblAddEndereco.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
+                jLblAddEnderecoMouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 680, 220, -1));
+        jPanel1.add(jLblAddEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 680, 220, -1));
 
-        jButton1.setBackground(new java.awt.Color(118, 135, 245));
-        jButton1.setMnemonic('S');
-        jButton1.setText("Salvar");
-        jButton1.setToolTipText("Salva os registros");
-        jButton1.setFocusPainted(false);
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 650, 100, 40));
+        jBtn_Salvar.setBackground(new java.awt.Color(118, 135, 245));
+        jBtn_Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/disk.png"))); // NOI18N
+        jBtn_Salvar.setMnemonic('S');
+        jBtn_Salvar.setText("Salvar");
+        jBtn_Salvar.setToolTipText("Salva os registros");
+        jBtn_Salvar.setFocusPainted(false);
+        jBtn_Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtn_SalvarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBtn_Salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 650, 100, 40));
+
+        jCBoxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        jCBoxUf.setEnabled(false);
+        jPanel1.add(jCBoxUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 70, -1));
+
+        jTF_TipoEndereco.setEditable(false);
+        jPanel1.add(jTF_TipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 547, 190, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -234,21 +266,28 @@ public class CadastrarCliente extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_closeIconMouseClicked
 
-    private void jTF_LogradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_LogradouroActionPerformed
+    private void jLblAddEnderecoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblAddEnderecoMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTF_LogradouroActionPerformed
+    }//GEN-LAST:event_jLblAddEnderecoMouseClicked
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void jBtn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_SalvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+        if(jRbPessoaJuridica.isSelected()){
+            
+        }else if(jRb_Pfisica.isSelected()){
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Informe o tipo de cliente!", "Erro",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBtn_SalvarActionPerformed
 
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel16MouseClicked
+    private void jRb_PfisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRb_PfisicaActionPerformed
+       desbloqueiaCampoFisica();
+    }//GEN-LAST:event_jRb_PfisicaActionPerformed
 
-    private void jTF_MunicipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTF_MunicipioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTF_MunicipioActionPerformed
+    private void jRbPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRbPessoaJuridicaActionPerformed
+        desbloqueiaCampoJuridica();
+    }//GEN-LAST:event_jRbPessoaJuridicaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -292,11 +331,56 @@ public class CadastrarCliente extends javax.swing.JDialog {
             }
         });
     }
+    
+    
+     private void CadastrarPessoaFisica(){
+        
+    }
+    
+     private void CadastrarPessoaJuridica(){
+        
+    }
+     
+    private void desbloqueiaCampoFisica(){
+         jTF_Bairro.setEnabled(true);
+        jTF_Complemento.setEnabled(true);
+        jTF_LimiteCredito.setEnabled(true);
+        jTF_Logradouro.setEnabled(true);
+        jTF_Municipio.setEnabled(true); 
+        jTF_NomeFantasia.setText(null);
+        jTF_NomeFantasia.setEnabled(false);        
+        jTF_TipoEndereco.setEnabled(true);        
+        jTF_cep.setEnabled(true);
+        jTF_cnpj.setText(null);
+        jTF_cnpj.setEnabled(false);
+        jTF_cpf.setEnabled(true);
+        jTF_numero.setEnabled(true);
+        jTf_Nome.setEnabled(true);
+        jCBoxUf.setEnabled(true);
+    }
+    
+    private void desbloqueiaCampoJuridica(){
+         jTF_Bairro.setEnabled(true);
+        jTF_Complemento.setEnabled(true);
+        jTF_LimiteCredito.setEnabled(true);
+        jTF_Logradouro.setEnabled(true);
+        jTF_Municipio.setEnabled(true); 
+        jTF_NomeFantasia.setEnabled(true);                
+        jTF_cep.setEnabled(true);
+        jTF_cnpj.setEnabled(true);
+        jTF_cpf.setText(null);
+        jTF_cpf.setEnabled(false);
+        jTF_numero.setEnabled(true);
+        jTf_Nome.setEnabled(true);
+        jTF_TipoEndereco.setEnabled(true);
+        jCBoxUf.setEnabled(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel closeIcon;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jCB_Uf;
+    private javax.swing.JButton jBtn_Salvar;
+    private javax.swing.JComboBox<String> jCBoxUf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -304,7 +388,6 @@ public class CadastrarCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -313,21 +396,22 @@ public class CadastrarCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLblAddEndereco;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRbPessoaJuridica;
     private javax.swing.JRadioButton jRb_Pfisica;
+    private javax.swing.JTextField jTF_Bairro;
     private javax.swing.JTextField jTF_Complemento;
     private javax.swing.JTextField jTF_LimiteCredito;
     private javax.swing.JTextField jTF_Logradouro;
     private javax.swing.JTextField jTF_Municipio;
     private javax.swing.JTextField jTF_NomeFantasia;
+    private javax.swing.JTextField jTF_TipoEndereco;
+    private javax.swing.JTextField jTF_cep;
     private javax.swing.JTextField jTF_cnpj;
     private javax.swing.JTextField jTF_cpf;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTF_numero;
     private javax.swing.JTextField jTf_Nome;
     // End of variables declaration//GEN-END:variables
 }
