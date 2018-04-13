@@ -53,13 +53,13 @@ public class Login extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(640, 516));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        overlay.setBackground(new java.awt.Color(51, 34, 94));
+        overlay.setBackground(new java.awt.Color(41, 30, 35));
         overlay.setPreferredSize(new java.awt.Dimension(640, 487));
         overlay.setRequestFocusEnabled(false);
         overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 640, 500));
 
-        JPanel.setBackground(new java.awt.Color(51, 0, 102));
+        JPanel.setBackground(new java.awt.Color(41, 30, 35));
 
         fieldNome.setBackground(new java.awt.Color(227, 226, 242));
         fieldNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -96,7 +96,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        iconeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/user_login.png"))); // NOI18N
+        iconeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-credenciais-do-usuário-64.png"))); // NOI18N
 
         labelLogin.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         labelLogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,10 +150,9 @@ public class Login extends javax.swing.JFrame {
         JPanelLayout.setHorizontalGroup(
             JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanelLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
                 .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPanelLayout.createSequentialGroup()
-                        .addGap(78, 78, 78)
+                        .addGap(122, 122, 122)
                         .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelSenha)
                             .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -165,8 +164,9 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(labelUsuario)))
                     .addGroup(JPanelLayout.createSequentialGroup()
-                        .addComponent(iconeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(216, 216, 216)
+                        .addComponent(iconeUsuario)
+                        .addGap(26, 26, 26)
                         .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 118, Short.MAX_VALUE))
             .addGroup(JPanelLayout.createSequentialGroup()
@@ -177,13 +177,11 @@ public class Login extends javax.swing.JFrame {
         JPanelLayout.setVerticalGroup(
             JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(iconeUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                    .addGroup(JPanelLayout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(62, 62, 62)
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(labelUsuario)
                 .addGap(8, 8, 8)
                 .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
