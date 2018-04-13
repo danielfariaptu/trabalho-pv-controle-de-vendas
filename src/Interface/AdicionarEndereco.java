@@ -54,7 +54,7 @@ public class AdicionarEndereco extends javax.swing.JDialog {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CadastroCliente.setBackground(new java.awt.Color(51, 0, 102));
+        CadastroCliente.setBackground(new java.awt.Color(41, 30, 35));
         CadastroCliente.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 CadastroClienteComponentShown(evt);
@@ -70,7 +70,6 @@ public class AdicionarEndereco extends javax.swing.JDialog {
 
         tfLogradouro.setNextFocusableComponent(tfNumero);
         CadastroCliente.add(tfLogradouro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 300, 29));
-
         CadastroCliente.add(tfMunicipio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 300, 29));
 
         tfNumero.setNextFocusableComponent(tfComplemento);
@@ -211,7 +210,7 @@ public class AdicionarEndereco extends javax.swing.JDialog {
         CadastroCliente.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
 
         jComboBox1.setMaximumRowCount(3);
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         CadastroCliente.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 160, -1));
 
         getContentPane().add(CadastroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 880, 520));
