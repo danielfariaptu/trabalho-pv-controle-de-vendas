@@ -12,19 +12,13 @@ CREATE TABLE "cliente" (
 "endereco" varchar(45),
 "limite_de_credito" double precision NOT NULL,
 "nomefantasia" varchar(45),
+"cpf" varchar(50),
+"cnpj" varchar(50),
+CONSTRAINT "cnpj" UNIQUE ("cnpj"),
+CONSTRAINT "cpf" UNIQUE ("cpf"),
 PRIMARY KEY ("cliente_id")
 )
 WITHOUT OIDS;
-
-CREATE TABLE "pessoa_juridica" (
-"cnpj" varchar(50),
-CONSTRAINT "cnpj" UNIQUE ("cnpj")
-)INHERITS("cliente");
-
-CREATE TABLE "pessoa_fisica" (
-"cpf" varchar(50),
-CONSTRAINT "cpf" UNIQUE ("cpf")
-)INHERITS("cliente");
 
 CREATE TABLE "conta" (
 "conta_id" serial NOT NULL,
