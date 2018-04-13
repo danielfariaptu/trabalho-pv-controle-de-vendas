@@ -41,6 +41,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        overlay = new javax.swing.JPanel();
         Navegation = new javax.swing.JPanel();
         botaoPainelLogOut = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -82,11 +83,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         BotaoAlterar = new javax.swing.JLabel();
-        overlay = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal - TAVV ");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        overlay.setBackground(new java.awt.Color(51, 34, 94));
+        overlay.setPreferredSize(new java.awt.Dimension(1280, 800));
+        overlay.setRequestFocusEnabled(false);
+        overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 810));
 
         Navegation.setPreferredSize(new java.awt.Dimension(62, 500));
         Navegation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -608,12 +614,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         BotaoAlterar.setLabelFor(BotaoAlterar);
         getContentPane().add(BotaoAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 800));
 
-        overlay.setBackground(new java.awt.Color(51, 34, 94));
-        overlay.setPreferredSize(new java.awt.Dimension(1280, 800));
-        overlay.setRequestFocusEnabled(false);
-        overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 810));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -772,7 +772,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoRemoverCMouseClicked
 
     private void botaoIncluirCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoIncluirCMouseClicked
-        PainelCliente.setVisible(true);
+        CadastrarCliente dialog = new CadastrarCliente(new javax.swing.JDialog(), true);
+        dialog.setLocationRelativeTo(null);
+        overlay.setVisible(true);
+	dialog.setVisible(true);
+        overlay.setVisible(false);
     }//GEN-LAST:event_botaoIncluirCMouseClicked
 
     private void botaoAlterarCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoAlterarCMouseClicked
