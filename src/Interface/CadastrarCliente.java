@@ -95,31 +95,31 @@ public class CadastrarCliente extends javax.swing.JDialog {
 
         jRb_Pfisica.setBackground(new java.awt.Color(41, 30, 35));
         buttonGroup1.add(jRb_Pfisica);
-        jRb_Pfisica.setFont(new java.awt.Font("Ubuntu", 0, 16)); // NOI18N
+        jRb_Pfisica.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jRb_Pfisica.setForeground(new java.awt.Color(255, 255, 255));
         jRb_Pfisica.setMnemonic('F');
-        jRb_Pfisica.setText("Pessoa Fisica");
+        jRb_Pfisica.setText("Pessoa Física");
         jRb_Pfisica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRb_PfisicaActionPerformed(evt);
             }
         });
         jPanel2.add(jRb_Pfisica);
-        jRb_Pfisica.setBounds(18, 33, 119, 24);
+        jRb_Pfisica.setBounds(18, 33, 125, 27);
 
         jRbPessoaJuridica.setBackground(new java.awt.Color(41, 30, 35));
         buttonGroup1.add(jRbPessoaJuridica);
-        jRbPessoaJuridica.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jRbPessoaJuridica.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jRbPessoaJuridica.setForeground(new java.awt.Color(255, 255, 255));
         jRbPessoaJuridica.setMnemonic('J');
-        jRbPessoaJuridica.setText("Pessoa Juridica");
+        jRbPessoaJuridica.setText("Pessoa Jurídica");
         jRbPessoaJuridica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRbPessoaJuridicaActionPerformed(evt);
             }
         });
         jPanel2.add(jRbPessoaJuridica);
-        jRbPessoaJuridica.setBounds(208, 33, 130, 30);
+        jRbPessoaJuridica.setBounds(208, 33, 150, 30);
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 690, 80));
 
@@ -240,8 +240,6 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jCBoxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         jCBoxUf.setEnabled(false);
         jPanel1.add(jCBoxUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 70, -1));
-
-        jTF_TipoEndereco.setEditable(false);
         jPanel1.add(jTF_TipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 547, 190, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

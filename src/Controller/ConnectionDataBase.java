@@ -12,7 +12,7 @@ public class ConnectionDataBase {
 	private final String DBNAME = "tavv";
 	private final String URL = "jdbc:postgresql://localhost:5432/" + DBNAME;
 	private final String LOGIN = "postgres";
-	private final String SENHA = "12345";
+	private final String SENHA = "123321";
 	
         
         
