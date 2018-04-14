@@ -2,6 +2,7 @@
 "id_login" serial NOT NULL,
 "nome" varchar(50) NOT NULL,
 "senha" varchar(60) NOT NULL,
+"excluido" 
 PRIMARY KEY ("id_login"),
 CONSTRAINT "username" UNIQUE ("nome")
 )
@@ -14,6 +15,7 @@ CREATE TABLE "cliente" (
 "nomefantasia" varchar(45),
 "cpf" varchar(50),
 "cnpj" varchar(50),
+"excluido" boolean NOT NULL,
 CONSTRAINT "cnpj" UNIQUE ("cnpj"),
 CONSTRAINT "cpf" UNIQUE ("cpf"),
 PRIMARY KEY ("cliente_id")
@@ -25,6 +27,7 @@ CREATE TABLE "conta" (
 "total" double precision,
 "data_vencimento" date,
 "fk_cliente_id" serial NOT NULL,
+"excluido" boolean NOT NULL,
 PRIMARY KEY ("conta_id") 
 )
 WITHOUT OIDS;
@@ -32,6 +35,7 @@ CREATE TABLE "compra" (
 "compra_id" serial NOT NULL,
 "data" date NOT NULL,
 "fk_conta_id" serial NOT NULL,
+"excluido" boolean NOT NULL,
 PRIMARY KEY ("compra_id") 
 )
 WITHOUT OIDS;
@@ -45,6 +49,7 @@ CREATE TABLE "produto" (
 "pais_de_origem" varchar(45) NOT NULL,
 "tipo_de_vinho" varchar(45) NOT NULL,
 "fk_compra_id" serial NOT NULL,
+"excluido" boolean NOT NULL,
 PRIMARY KEY ("produto_id") 
 )
 WITHOUT OIDS;
@@ -54,6 +59,7 @@ CREATE TABLE "fatura" (
 "data_quitacao" date,
 "juros" double precision,
 "conta_id" serial NOT NULL,
+"excluido" boolean NOT NULL,
 PRIMARY KEY ("fatura_id")
 )
 WITHOUT OIDS;
@@ -67,6 +73,7 @@ CREATE TABLE "endereco" (
 "municipio" varchar(45) NOT NULL,
 "estado" varchar(20) NOT NULL,
 "tipo_endereco" integer NOT NULL,
+"excluido" boolean NOT NULL,
 "fk_cliente_id" serial,
 PRIMARY KEY ("endereco_id") 
 )
@@ -77,6 +84,7 @@ CREATE TABLE "pagamento" (
 "tipo" integer,
 "juros" double precision,
 "fk_fatura_id" serial NOT NULL,
+"excluido" boolean NOT NULL,
 PRIMARY KEY ("pagamento_id", "fk_fatura_id") 
 )
 WITHOUT OIDS;
