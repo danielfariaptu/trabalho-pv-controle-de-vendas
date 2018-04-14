@@ -572,7 +572,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         labelPag.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         labelPag.setForeground(new java.awt.Color(255, 255, 255));
         labelPag.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelPag.setText("PAGAMENTO");
+        labelPag.setText("PRODUTO");
         ProdTitle.add(labelPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 11, 137, 38));
 
         PainelProduto.add(ProdTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 810, 80));

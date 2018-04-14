@@ -42,7 +42,6 @@ public class AdicionarEndereco extends javax.swing.JDialog {
         lbTipoEndereco = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         lbAviso = new javax.swing.JLabel();
         btnLimpar = new javax.swing.JButton();
         btnNovo = new javax.swing.JButton();
@@ -142,7 +141,7 @@ public class AdicionarEndereco extends javax.swing.JDialog {
 
         btnConfirmar.setBackground(new java.awt.Color(102, 102, 102));
         btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhoedwar/imagens/confirmar_1.png"))); // NOI18N
-        btnConfirmar.setText("Cadastro");
+        btnConfirmar.setText("Salvar");
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarActionPerformed(evt);
@@ -153,17 +152,7 @@ public class AdicionarEndereco extends javax.swing.JDialog {
                 btnConfirmarKeyPressed(evt);
             }
         });
-        CadastroCliente.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, 140, 60));
-
-        btnCancelar.setBackground(new java.awt.Color(102, 102, 102));
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhoedwar/imagens/excluir.png"))); // NOI18N
-        btnCancelar.setText("Fechar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        CadastroCliente.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 140, 60));
+        CadastroCliente.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 140, 60));
 
         lbAviso.setForeground(new java.awt.Color(255, 255, 255));
         lbAviso.setText("Os campos marcados com * são obrigatórios.");
@@ -181,7 +170,7 @@ public class AdicionarEndereco extends javax.swing.JDialog {
                 btnLimparKeyPressed(evt);
             }
         });
-        CadastroCliente.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 410, 140, 60));
+        CadastroCliente.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 400, 140, 60));
 
         btnNovo.setBackground(new java.awt.Color(102, 102, 102));
         btnNovo.setText("Novo");
@@ -195,7 +184,7 @@ public class AdicionarEndereco extends javax.swing.JDialog {
                 btnNovoKeyTyped(evt);
             }
         });
-        CadastroCliente.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 410, 140, 60));
+        CadastroCliente.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 140, 60));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,12 +259,6 @@ public class AdicionarEndereco extends javax.swing.JDialog {
             tfLogradouro.requestFocus();
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-
-        setVisible(false);
-        dispose();
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnConfirmarKeyPressed
         if (evt.getKeyCode() == 10) {
@@ -372,7 +355,6 @@ public class AdicionarEndereco extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CadastroCliente;
-    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnNovo;

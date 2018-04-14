@@ -105,7 +105,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
             }
         });
         jPanel2.add(jRb_Pfisica);
-        jRb_Pfisica.setBounds(18, 33, 125, 27);
+        jRb_Pfisica.setBounds(18, 33, 129, 24);
 
         jRbPessoaJuridica.setBackground(new java.awt.Color(41, 30, 35));
         buttonGroup1.add(jRbPessoaJuridica);
@@ -240,6 +240,8 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jCBoxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         jCBoxUf.setEnabled(false);
         jPanel1.add(jCBoxUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 70, -1));
+
+        jTF_TipoEndereco.setEnabled(false);
         jPanel1.add(jTF_TipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 547, 190, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -247,8 +249,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 811, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -266,6 +267,9 @@ public class CadastrarCliente extends javax.swing.JDialog {
 
     private void jLblAddEnderecoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblAddEnderecoMouseClicked
         // TODO add your handling code here:
+        
+        
+        Adicionar
     }//GEN-LAST:event_jLblAddEnderecoMouseClicked
 
     private void jBtn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_SalvarActionPerformed
@@ -332,6 +336,52 @@ public class CadastrarCliente extends javax.swing.JDialog {
     
     
      private void CadastrarPessoaFisica(){
+         
+         
+         if (!jTf_Nome.getText().isEmpty()) {
+            if (!jTF_cpf.getText().isEmpty()) {
+                if (!tfCodigoBarras.getText().isEmpty()) {
+                    if (!tfTipoUva.getText().isEmpty()) {
+                        if (!tfPaisOrigem.getText().isEmpty()) {
+                            if (!tfTipoVinho.getText().isEmpty()) {
+                                if (JOptionPane.showConfirmDialog(rootPane, "Desesja realmente cadastrar este produto? ", "Comfirma salvar?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                                    boolean result = gp.cadastrarProduto(tfNome.getText().trim(), Integer.valueOf(tfPreco.getText()), tfCodigoBarras.getText(), tfTipoUva.getText(), tfPaisOrigem.getText(), tfTipoVinho.getText());
+                                    if (result) {
+                                        abilitaCampos(false);
+                                        btnConfirmar.setEnabled(false);
+                                        btnNovo.setEnabled(true);
+                                        JOptionPane.showMessageDialog(rootPane, "Produto cadastrado.");
+                                    } else {
+                                        JOptionPane.showMessageDialog(this, "Produto não cadastrado !", "Atenção!", JOptionPane.WARNING_MESSAGE);
+                                        tfNome.requestFocus();
+                                    }
+                                } else {
+                                    tfNome.requestFocus();
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(rootPane, "Campo Preço obrigatorio!");
+                                tfPreco.requestFocus();
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "Campo Código de Barras obrigatorio!");
+                            tfCodigoBarras.requestFocus();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Campo Tipo de Uva obrigatorio!");
+                        tfTipoUva.requestFocus();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Campo País de Origem obrigatorio!");
+                    tfPaisOrigem.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Campo Tipo de Vinhoobrigatorio!");
+                tfTipoVinho.requestFocus();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Campo Nome obrigatorio!");
+            tfNome.requestFocus();
+        }
         
     }
     
