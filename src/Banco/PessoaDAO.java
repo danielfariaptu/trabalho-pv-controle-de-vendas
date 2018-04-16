@@ -5,10 +5,12 @@
  */
 package Banco;
 
+import Controller.Conexao;
 import Model.PessoaFisica;
 import Model.PessoaJuridica;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,35 +24,28 @@ public class PessoaDAO {
     
 
     public PessoaDAO() {
-    
+    conn = Conexao.getConexao();
     }
 
-    public void inserirPessoaFisica(PessoaFisica cliente) {
+    public boolean inserirPessoaFisica(PessoaFisica cliente) {
         String sql;
         PreparedStatement ps;
-         
-        /*
+        
         
         sql = "INSERT INTO cliente(nome,limite_de_credito,cpf,excluido) VALUES (?,?,?,?)";
 
         try {
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, cli.getCode());
-            ps.setString(2, cli.getNome());
-            ps.setString(3, cli.getLogradouro());
-            ps.setInt(4, cli.getNumero());
-            ps.setString(5, cli.getBairro());
-            ps.setString(6, cli.getMunicipio());
-            ps.setString(7, cli.getEstado());
-            ps.setString(8, cli.getCep());
-            ps.setString(9, cli.getTelefone());
+            ps.setString(1, cliente.getNome());
+            ps.setDouble(2, cliente.getLimiteCredito());
+            ps.setString(3, cliente.getCpf());
+            ps.setBoolean(4, false);
             ps.execute();
             ps.close();
+           return true;
         } catch (Exception e) {
-            System.out.println("Erro na operação de inserção: " + e.getMessage());
-        }
-      */     
-        
+           JOptionPane.showMessageDialog(null,e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        } 
+        return false;
     }
-
 }

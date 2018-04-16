@@ -5,6 +5,7 @@
  */
 package Interface;
 
+import Banco.PessoaDAO;
 import Model.Endereco;
 import Model.PessoaFisica;
 import Model.PessoaJuridica;
@@ -20,7 +21,8 @@ public class CadastrarCliente extends javax.swing.JDialog {
     private PessoaJuridica pj;
     private PessoaFisica pf;
     private Endereco end = new Endereco();
-    private ArrayList<Endereco> enderecos;
+    private ArrayList<Endereco> enderecos = new ArrayList<Endereco>();
+    private PessoaDAO pDAO= new PessoaDAO();
     /**
      * Creates new form NewJDialog
      */
@@ -354,11 +356,13 @@ public class CadastrarCliente extends javax.swing.JDialog {
                                                     }
                                                     enderecos.add(end);
                                                     pf= new PessoaFisica(jTF_cpf.getText(), jTf_Nome.getText(), enderecos,Double.valueOf(jTF_LimiteCredito.getText()));
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
+                                                    if(pDAO.inserirPessoaFisica(pf)){
+                                                        JOptionPane.showMessageDialog(rootPane,"Cliente salvo com sucesso!", "Mensagem",  JOptionPane.INFORMATION_MESSAGE);
+                                                    }else{
+                                                        JOptionPane.showMessageDialog(rootPane,"Erro ao salvar cliente", "Mensagem",  JOptionPane.ERROR_MESSAGE);
+
+                                                    }
+                         
                                                 }
                                             } else {
                                                 JOptionPane.showMessageDialog(rootPane, "Tipo de endereco e  obrigatorio!");
