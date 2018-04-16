@@ -1,6 +1,6 @@
 package Banco;
 
-import Entidades.Endereco;
+import Model.Endereco;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

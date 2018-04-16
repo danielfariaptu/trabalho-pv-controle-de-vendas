@@ -1,6 +1,7 @@
 package Controller;
 
 import Criptografia.BCrypt;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -14,10 +15,10 @@ public class LoginDAO {
     private BCrypt BCrypt;
     private Integer cont = 1;
     private Boolean verificaSenha;
-    private ConnectionDataBase bd;
+    private Connection conn;
 
     public LoginDAO() {
-        bd = new ConnectionDataBase();
+        conn= Conexao.getConexao();
 
     }
 
@@ -26,14 +27,9 @@ public class LoginDAO {
         String senhaDoBanco;
 
         try {
-            if (!bd.getConnection()) {
-                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
-                System.exit(0);
-            }
-
             String url = "SELECT * FROM usuario WHERE nome=?";
 
-            statement = bd.connection.prepareStatement(url);
+            statement = conn.prepareStatement(url);
             statement.setString(1, nome);
 
             resultSet = statement.executeQuery();
@@ -57,14 +53,10 @@ public class LoginDAO {
     public Boolean RealizaLogin(String nome, String senhaResultado, String senhaAtual) {
 
         try {
-            if (!bd.getConnection()) {
-                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
-                System.exit(0);
-            }
-
+            
             String userExist = "SELECT * FROM usuario WHERE nome=?";
 
-            statement = bd.connection.prepareStatement(userExist);
+            statement = conn.prepareStatement(userExist);
             statement.setString(1, nome);
 
             resultSet = statement.executeQuery();
@@ -89,7 +81,7 @@ public class LoginDAO {
 
                     String url2 = "SELECT * FROM usuario WHERE nome=? AND senha=?";
 
-                    statement = bd.connection.prepareStatement(url2);
+                    statement = conn.prepareStatement(url2);
                     statement.setString(1, nome);
                     statement.setString(2, senhaResultado);
 
@@ -114,7 +106,7 @@ public class LoginDAO {
             }
             resultSet.close();
             statement.close();
-            bd.close();
+            conn.close();
 
         } catch (Exception erro) {
             JOptionPane.showMessageDialog(null, "Algo de errado aconteceu:\n " + erro.toString());

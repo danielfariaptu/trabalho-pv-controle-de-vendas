@@ -1,7 +1,7 @@
 package Controle;
 
 import Banco.ProdutoDAO;
-import Entidades.Produto;
+import Model.Produto;
 import java.util.ArrayList;
 
 public class GerenciaProduto {

@@ -1,7 +1,7 @@
 package Interface;
 
 import Controle.GerenciaProduto;
-import Entidades.Produto;
+import Model.Produto;
 import javax.swing.JOptionPane;
 
 public class AlterarProduto extends javax.swing.JDialog {

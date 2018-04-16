@@ -1,9 +1,9 @@
 package Controle;
 
 import Banco.CompraDAO;
-import Entidades.Compra;
+import Model.Compra;
 import Controle.GerenciaProduto;
-import Entidades.Produto;
+import Model.Produto;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;

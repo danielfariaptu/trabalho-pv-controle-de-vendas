@@ -1,7 +1,7 @@
 package Interface;
 
 import Controle.GerenciaProduto;
-import Entidades.Produto;
+import Model.Produto;
 import Interface.NewTableModel;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

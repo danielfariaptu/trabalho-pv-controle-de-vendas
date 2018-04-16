@@ -18,6 +18,7 @@ private String bairro;
 private String municipio;
 private String estado;
 private int tipoEndereco;
+private int cep;
 
     public Endereco(){
         
@@ -88,4 +89,13 @@ private int tipoEndereco;
     public void setTipoEndereco(int tipoEndereco) {
         this.tipoEndereco = tipoEndereco;
     }  
+
+    public int getCep() {
+        return cep;
+    }
+
+    public void setCep(int cep) {
+        this.cep = cep;
+    }
+    
 }

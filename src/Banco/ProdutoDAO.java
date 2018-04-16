@@ -1,6 +1,6 @@
 package Banco;
 
-import Entidades.Produto;
+import Model.Produto;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

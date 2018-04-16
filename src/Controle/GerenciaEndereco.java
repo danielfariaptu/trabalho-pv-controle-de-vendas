@@ -1,7 +1,7 @@
 package Controle;
 
 import Banco.EnderecoDAO;
-import Entidades.Endereco;
+import Model.Endereco;
 import java.util.ArrayList;
 
 public class GerenciaEndereco {

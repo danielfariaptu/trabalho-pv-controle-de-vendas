@@ -2,7 +2,6 @@
 "id_login" serial NOT NULL,
 "nome" varchar(50) NOT NULL,
 "senha" varchar(60) NOT NULL,
-"excluido" 
 PRIMARY KEY ("id_login"),
 CONSTRAINT "username" UNIQUE ("nome")
 )
@@ -10,7 +9,6 @@ WITHOUT OIDS;
 CREATE TABLE "cliente" (
 "cliente_id" serial NOT NULL,
 "nome" varchar(50) NOT NULL,
-"endereco" varchar(45),
 "limite_de_credito" double precision NOT NULL,
 "nomefantasia" varchar(45),
 "cpf" varchar(50),

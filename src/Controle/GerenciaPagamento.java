@@ -1,7 +1,7 @@
 package Controle;
 
 import Banco.PagamentoDAO;
-import Entidades.Pagamento;
+import Model.Pagamento;
 import java.time.LocalDate;
 import java.util.ArrayList;
 

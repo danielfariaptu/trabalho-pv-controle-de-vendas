@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import Model.Endereco;
+import Model.PessoaFisica;
+import Model.PessoaJuridica;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +16,11 @@ import javax.swing.JOptionPane;
  * @author danie
  */
 public class CadastrarCliente extends javax.swing.JDialog {
-
+    
+    private PessoaJuridica pj;
+    private PessoaFisica pf;
+    private Endereco end = new Endereco();
+    private ArrayList<Endereco> enderecos;
     /**
      * Creates new form NewJDialog
      */
@@ -62,10 +70,9 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLblAddEndereco = new javax.swing.JLabel();
         jBtn_Salvar = new javax.swing.JButton();
         jCBoxUf = new javax.swing.JComboBox<>();
-        jTF_TipoEndereco = new javax.swing.JTextField();
+        jCBoxTipoEndereco = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -82,7 +89,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
                 closeIconMouseClicked(evt);
             }
         });
-        jPanel1.add(closeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, -1, -1));
+        jPanel1.add(closeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,17 +220,6 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jLabel15.setText("Campos \"*\" sao obrigatorios");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 200, -1));
 
-        jLblAddEndereco.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
-        jLblAddEndereco.setForeground(new java.awt.Color(255, 255, 255));
-        jLblAddEndereco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add.png"))); // NOI18N
-        jLblAddEndereco.setText("Adicionar mais endereço");
-        jLblAddEndereco.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLblAddEnderecoMouseClicked(evt);
-            }
-        });
-        jPanel1.add(jLblAddEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 680, 220, -1));
-
         jBtn_Salvar.setBackground(new java.awt.Color(118, 135, 245));
         jBtn_Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/disk.png"))); // NOI18N
         jBtn_Salvar.setMnemonic('S');
@@ -235,26 +231,27 @@ public class CadastrarCliente extends javax.swing.JDialog {
                 jBtn_SalvarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBtn_Salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 650, 100, 40));
+        jPanel1.add(jBtn_Salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 630, 100, 40));
 
-        jCBoxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        jCBoxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecione -", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         jCBoxUf.setEnabled(false);
-        jPanel1.add(jCBoxUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 70, -1));
+        jPanel1.add(jCBoxUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 130, -1));
 
-        jTF_TipoEndereco.setEnabled(false);
-        jPanel1.add(jTF_TipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 547, 190, 30));
+        jCBoxTipoEndereco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecione -", "Residencial", "Comercial" }));
+        jCBoxTipoEndereco.setEnabled(false);
+        jPanel1.add(jCBoxTipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 550, 190, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 845, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 857, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -265,26 +262,19 @@ public class CadastrarCliente extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_closeIconMouseClicked
 
-    private void jLblAddEnderecoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLblAddEnderecoMouseClicked
-        // TODO add your handling code here:
-        
-        
-        Adicionar
-    }//GEN-LAST:event_jLblAddEnderecoMouseClicked
-
     private void jBtn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_SalvarActionPerformed
         // TODO add your handling code here:
-        if(jRbPessoaJuridica.isSelected()){
-            
-        }else if(jRb_Pfisica.isSelected()){
-            
-        }else{
-            JOptionPane.showMessageDialog(null, "Informe o tipo de cliente!", "Erro",JOptionPane.ERROR_MESSAGE);
+        if (jRbPessoaJuridica.isSelected()) {
+
+        } else if (jRb_Pfisica.isSelected()) {
+            CadastrarPessoaFisica();
+        } else {
+            JOptionPane.showMessageDialog(null, "Informe o tipo de cliente!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBtn_SalvarActionPerformed
 
     private void jRb_PfisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRb_PfisicaActionPerformed
-       desbloqueiaCampoFisica();
+        desbloqueiaCampoFisica();
     }//GEN-LAST:event_jRb_PfisicaActionPerformed
 
     private void jRbPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRbPessoaJuridicaActionPerformed
@@ -334,70 +324,139 @@ public class CadastrarCliente extends javax.swing.JDialog {
         });
     }
     
-    
-     private void CadastrarPessoaFisica(){
-         
-         
-         if (!jTf_Nome.getText().isEmpty()) {
+    //jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex())
+    private void CadastrarPessoaFisica() {
+        if (!jTf_Nome.getText().isEmpty()) {
             if (!jTF_cpf.getText().isEmpty()) {
-                if (!tfCodigoBarras.getText().isEmpty()) {
-                    if (!tfTipoUva.getText().isEmpty()) {
-                        if (!tfPaisOrigem.getText().isEmpty()) {
-                            if (!tfTipoVinho.getText().isEmpty()) {
-                                if (JOptionPane.showConfirmDialog(rootPane, "Desesja realmente cadastrar este produto? ", "Comfirma salvar?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                                    boolean result = gp.cadastrarProduto(tfNome.getText().trim(), Integer.valueOf(tfPreco.getText()), tfCodigoBarras.getText(), tfTipoUva.getText(), tfPaisOrigem.getText(), tfTipoVinho.getText());
-                                    if (result) {
-                                        abilitaCampos(false);
-                                        btnConfirmar.setEnabled(false);
-                                        btnNovo.setEnabled(true);
-                                        JOptionPane.showMessageDialog(rootPane, "Produto cadastrado.");
+                if (!jTF_LimiteCredito.getText().isEmpty()) {
+                    if (!jTF_Logradouro.getText().isEmpty()) {
+                        if (!jTF_numero.getText().isEmpty()) {
+                            if (!jTF_Bairro.getText().isEmpty()) {
+                                if (!jTF_Municipio.getText().isEmpty()) {
+                                    if (!jTF_cep.getText().isEmpty()) {
+                                        if (!jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()).equals("- Selecione -")) {
+                                            if (!jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("- Selecione -")) {
+                                                if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(rootPane,"Deseja adicionar algum endereço ?")){
+                                                    
+                                                
+                                                
+                                                }else{
+                                                    end.setLogradouro(jTF_Logradouro.getText());
+                                                    end.setNumero(Integer.parseInt(jTF_numero.getText()));
+                                                    end.setBairro(jTF_Bairro.getText());
+                                                    end.setComplemento(jTF_Complemento.getText());
+                                                    end.setCep(Integer.parseInt(jTF_cep.getText()));
+                                                    end.setEstado(jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()));
+                                                    if(jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("Residencial")){
+                                                    end.setTipoEndereco(1);
+                                                    }else{
+                                                    end.setTipoEndereco(2);
+                                                    }
+                                                    enderecos.add(end);
+                                                    pf= new PessoaFisica(jTF_cpf.getText(), jTf_Nome.getText(), enderecos,Double.valueOf(jTF_LimiteCredito.getText()));
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                }
+                                            } else {
+                                                JOptionPane.showMessageDialog(rootPane, "Tipo de endereco e  obrigatorio!");
+                                                jCBoxTipoEndereco.requestFocus();
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(rootPane, "UF e  obrigatorio!");
+                                            jCBoxUf.requestFocus();
+                                        }
                                     } else {
-                                        JOptionPane.showMessageDialog(this, "Produto não cadastrado !", "Atenção!", JOptionPane.WARNING_MESSAGE);
-                                        tfNome.requestFocus();
+                                        JOptionPane.showMessageDialog(rootPane, "Campo CEP e  obrigatorio!");
+                                        jTF_cep.requestFocus();
                                     }
                                 } else {
-                                    tfNome.requestFocus();
+                                    JOptionPane.showMessageDialog(rootPane, "Campo Municipio e  obrigatorio!");
+                                    jTF_Municipio.requestFocus();
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(rootPane, "Campo Preço obrigatorio!");
-                                tfPreco.requestFocus();
+                                JOptionPane.showMessageDialog(rootPane, "Campo Bairro e  obrigatorio!");
+                                jTF_Bairro.requestFocus();
                             }
                         } else {
-                            JOptionPane.showMessageDialog(rootPane, "Campo Código de Barras obrigatorio!");
-                            tfCodigoBarras.requestFocus();
+                            JOptionPane.showMessageDialog(rootPane, "Campo Numero e obrigatorio!");
+                            jTF_numero.requestFocus();
                         }
                     } else {
-                        JOptionPane.showMessageDialog(rootPane, "Campo Tipo de Uva obrigatorio!");
-                        tfTipoUva.requestFocus();
+                        JOptionPane.showMessageDialog(rootPane, "Campo Logradouro e obrigatorio!");
+                        jTF_Logradouro.requestFocus();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Campo País de Origem obrigatorio!");
-                    tfPaisOrigem.requestFocus();
+                    JOptionPane.showMessageDialog(rootPane, "Campo Limite de credito e obrigatorio!");
+                    jTF_LimiteCredito.requestFocus();
                 }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Campo Tipo de Vinhoobrigatorio!");
-                tfTipoVinho.requestFocus();
+                JOptionPane.showMessageDialog(rootPane, "Campo CPF e obrigatorio!");
+                jTF_cpf.requestFocus();
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Campo Nome obrigatorio!");
-            tfNome.requestFocus();
+            JOptionPane.showMessageDialog(rootPane, "Campo Nome e obrigatorio!");
+            jTf_Nome.requestFocus();
         }
-        
     }
-    
-     private void CadastrarPessoaJuridica(){
-        
+
+    private void CadastrarPessoaJuridica() {
+
+        if (!jTf_Nome.getText().isEmpty()) {
+            if (!jTF_NomeFantasia.getText().isEmpty()) {
+                if (!jTF_LimiteCredito.getText().isEmpty()) {
+                    if (!jTF_Logradouro.getText().isEmpty()) {
+                        if (!jTF_numero.getText().isEmpty()) {
+                            if (!jTF_Bairro.getText().isEmpty()) {
+                                if (!jTF_Municipio.getText().isEmpty()) {
+                                    if (!jTF_cep.getText().isEmpty()) {
+
+                                    } else {
+                                        JOptionPane.showMessageDialog(rootPane, "Campo CEP e  obrigatorio!");
+                                        jTF_cep.requestFocus();
+                                    }
+                                } else {
+                                    JOptionPane.showMessageDialog(rootPane, "Campo Municipio e  obrigatorio!");
+                                    jTF_Municipio.requestFocus();
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(rootPane, "Campo Bairro e  obrigatorio!");
+                                jTF_Bairro.requestFocus();
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "Campo Numero e obrigatorio!");
+                            jTF_numero.requestFocus();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Campo Logradouro e obrigatorio!");
+                        jTF_Logradouro.requestFocus();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Campo Limite de credito e obrigatorio!");
+                    jTF_LimiteCredito.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Campo Nome fantasia e obrigatorio!");
+                jTF_NomeFantasia.requestFocus();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Campo Nome e obrigatorio!");
+            jTf_Nome.requestFocus();
+        }
+
     }
-     
-    private void desbloqueiaCampoFisica(){
-         jTF_Bairro.setEnabled(true);
+
+    private void desbloqueiaCampoFisica() {
+        jTF_Bairro.setEnabled(true);
         jTF_Complemento.setEnabled(true);
         jTF_LimiteCredito.setEnabled(true);
         jTF_Logradouro.setEnabled(true);
-        jTF_Municipio.setEnabled(true); 
+        jTF_Municipio.setEnabled(true);
         jTF_NomeFantasia.setText(null);
-        jTF_NomeFantasia.setEnabled(false);        
-        jTF_TipoEndereco.setEnabled(true);        
+        jTF_NomeFantasia.setEnabled(false);
+        jCBoxTipoEndereco.setEnabled(true);
         jTF_cep.setEnabled(true);
         jTF_cnpj.setText(null);
         jTF_cnpj.setEnabled(false);
@@ -406,21 +465,21 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jTf_Nome.setEnabled(true);
         jCBoxUf.setEnabled(true);
     }
-    
-    private void desbloqueiaCampoJuridica(){
-         jTF_Bairro.setEnabled(true);
+
+    private void desbloqueiaCampoJuridica() {
+        jTF_Bairro.setEnabled(true);
         jTF_Complemento.setEnabled(true);
         jTF_LimiteCredito.setEnabled(true);
         jTF_Logradouro.setEnabled(true);
-        jTF_Municipio.setEnabled(true); 
-        jTF_NomeFantasia.setEnabled(true);                
+        jTF_Municipio.setEnabled(true);
+        jTF_NomeFantasia.setEnabled(true);
         jTF_cep.setEnabled(true);
         jTF_cnpj.setEnabled(true);
         jTF_cpf.setText(null);
         jTF_cpf.setEnabled(false);
         jTF_numero.setEnabled(true);
         jTf_Nome.setEnabled(true);
-        jTF_TipoEndereco.setEnabled(true);
+        jCBoxTipoEndereco.setEnabled(true);
         jCBoxUf.setEnabled(true);
     }
 
@@ -428,6 +487,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel closeIcon;
     private javax.swing.JButton jBtn_Salvar;
+    private javax.swing.JComboBox<String> jCBoxTipoEndereco;
     private javax.swing.JComboBox<String> jCBoxUf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -444,7 +504,6 @@ public class CadastrarCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLblAddEndereco;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRbPessoaJuridica;
@@ -455,7 +514,6 @@ public class CadastrarCliente extends javax.swing.JDialog {
     private javax.swing.JTextField jTF_Logradouro;
     private javax.swing.JTextField jTF_Municipio;
     private javax.swing.JTextField jTF_NomeFantasia;
-    private javax.swing.JTextField jTF_TipoEndereco;
     private javax.swing.JTextField jTF_cep;
     private javax.swing.JTextField jTF_cnpj;
     private javax.swing.JTextField jTF_cpf;

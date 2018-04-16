@@ -1,6 +1,7 @@
 package Controller;
 
 import Criptografia.BCrypt;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,28 +16,25 @@ public class CadastroDAO {
     private BCrypt BCrypt;
     private Integer cont = 1;
     private Boolean verificaSenha;
-    private ConnectionDataBase bd;
-
+    private Connection conn;
+    
     public CadastroDAO() {
-        bd = new ConnectionDataBase();
+              conn= Conexao.getConexao();
+
 
     }
 
     public Boolean CadastroUser(String nome, String senhaHasheada) {
 
         try {
-            if (!bd.getConnection()) {
-                JOptionPane.showMessageDialog(null, "Falha na conexão, o sistem será fechado!");
-                System.exit(0);
-            }
-
+            
             String url = "INSERT INTO usuario (nome, senha) VALUES(?,?)";
-            statement = bd.connection.prepareStatement(url);
+            statement = conn.prepareStatement(url);
             statement.setString(1, nome);
             statement.setString(2, senhaHasheada);
             statement.execute();
             statement.close();
-            bd.close();
+            conn.close();
             JOptionPane.showMessageDialog(null, "Usuário Cadastrado com sucesso!");
             return (true);
 
