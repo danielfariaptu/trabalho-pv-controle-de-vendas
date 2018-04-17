@@ -106,7 +106,7 @@ public class CadastroCompra extends javax.swing.JDialog {
         });
         CadastroProduto.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 140, 60));
 
-        getContentPane().add(CadastroProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 450));
+        getContentPane().add(CadastroProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 910, 450));
 
         pack();
         setLocationRelativeTo(null);

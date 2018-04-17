@@ -4,7 +4,6 @@ import Controle.GerenciaProduto;
 import java.awt.AWTKeyStroke;
 import java.awt.Color;
 import java.awt.KeyboardFocusManager;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
@@ -14,12 +13,7 @@ public class CadastroProduto extends javax.swing.JDialog {
     HashSet backup = new HashSet(this.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
     HashSet teclaEnter = (HashSet) backup.clone();
     GerenciaProduto gp;
-    
-    public CadastroProduto(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-    }
-  
+
     public CadastroProduto(java.awt.Frame parent, boolean modal, GerenciaProduto gp) {
         super(parent, modal);
         initComponents();
@@ -44,18 +38,17 @@ public class CadastroProduto extends javax.swing.JDialog {
         lbPaisOrigem = new javax.swing.JLabel();
         lbCodigoBarras = new javax.swing.JLabel();
         lbTipoVinho = new javax.swing.JLabel();
-        lbAviso = new javax.swing.JLabel();
-        btnFechar = new javax.swing.JButton();
-        btnNovo = new javax.swing.JButton();
         btnConfirmar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        lbAviso = new javax.swing.JLabel();
         btnLimpar = new javax.swing.JButton();
-        closeIcon = new javax.swing.JLabel();
+        btnNovo = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CadastroProduto.setBackground(new java.awt.Color(41, 30, 35));
+        CadastroProduto.setBackground(new java.awt.Color(51, 0, 102));
         CadastroProduto.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 CadastroProdutoComponentShown(evt);
@@ -81,6 +74,8 @@ public class CadastroProduto extends javax.swing.JDialog {
         tfPaisOrigem.setNextFocusableComponent(tfTipoVinho);
         CadastroProduto.add(tfPaisOrigem, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 300, 29));
         CadastroProduto.add(tfCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 300, 29));
+
+        tfTipoVinho.setNextFocusableComponent(btnConfirmar);
         CadastroProduto.add(tfTipoVinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 300, 29));
 
         lbNome.setDisplayedMnemonic('n');
@@ -125,41 +120,9 @@ public class CadastroProduto extends javax.swing.JDialog {
         lbTipoVinho.setText("TIPO DE VINHO:");
         CadastroProduto.add(lbTipoVinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, -1, -1));
 
-        lbAviso.setForeground(new java.awt.Color(255, 255, 255));
-        lbAviso.setText("Os campos marcados com * são obrigatórios.");
-        CadastroProduto.add(lbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
-
-        btnFechar.setBackground(new java.awt.Color(102, 102, 102));
-        btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-cancelar-32.png"))); // NOI18N
-        btnFechar.setText("Fechar");
-        btnFechar.setFocusPainted(false);
-        btnFechar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFecharActionPerformed(evt);
-            }
-        });
-        CadastroProduto.add(btnFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, 140, 60));
-
-        btnNovo.setBackground(new java.awt.Color(102, 102, 102));
-        btnNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-adicionar-32.png"))); // NOI18N
-        btnNovo.setText("Novo");
-        btnNovo.setFocusPainted(false);
-        btnNovo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoActionPerformed(evt);
-            }
-        });
-        btnNovo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                btnNovoKeyTyped(evt);
-            }
-        });
-        CadastroProduto.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 140, 60));
-
         btnConfirmar.setBackground(new java.awt.Color(102, 102, 102));
-        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-ok-32.png"))); // NOI18N
+        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhoedwar/imagens/confirmar_1.png"))); // NOI18N
         btnConfirmar.setText("Cadastro");
-        btnConfirmar.setFocusPainted(false);
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarActionPerformed(evt);
@@ -170,12 +133,23 @@ public class CadastroProduto extends javax.swing.JDialog {
                 btnConfirmarKeyPressed(evt);
             }
         });
-        CadastroProduto.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 340, 140, 60));
+        CadastroProduto.add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 140, 60));
+
+        btnCancelar.setBackground(new java.awt.Color(102, 102, 102));
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhoedwar/imagens/excluir.png"))); // NOI18N
+        btnCancelar.setText("Fechar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        CadastroProduto.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 140, 60));
+
+        lbAviso.setText("Os campos marcados com * são obrigatórios.");
+        CadastroProduto.add(lbAviso, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, -1, -1));
 
         btnLimpar.setBackground(new java.awt.Color(102, 102, 102));
-        btnLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-apagar-32.png"))); // NOI18N
         btnLimpar.setText("Limpar");
-        btnLimpar.setFocusPainted(false);
         btnLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimparActionPerformed(evt);
@@ -186,18 +160,23 @@ public class CadastroProduto extends javax.swing.JDialog {
                 btnLimparKeyPressed(evt);
             }
         });
-        CadastroProduto.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 340, 140, 60));
+        CadastroProduto.add(btnLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 310, 140, 60));
 
-        closeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-close-window-40.png"))); // NOI18N
-        closeIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        closeIcon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closeIconMouseClicked(evt);
+        btnNovo.setBackground(new java.awt.Color(102, 102, 102));
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
             }
         });
-        CadastroProduto.add(closeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, -1, -1));
+        btnNovo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                btnNovoKeyTyped(evt);
+            }
+        });
+        CadastroProduto.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 140, 60));
 
-        getContentPane().add(CadastroProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 500));
+        getContentPane().add(CadastroProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -225,30 +204,35 @@ public class CadastroProduto extends javax.swing.JDialog {
                                     tfNome.requestFocus();
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(rootPane, "Campo Tipo de Vinho obrigatório!");
+                                JOptionPane.showMessageDialog(rootPane, "Campo Preço obrigatorio!");
                                 tfPreco.requestFocus();
                             }
                         } else {
-                            JOptionPane.showMessageDialog(rootPane, "Campo País de Origem obrigatório!");
+                            JOptionPane.showMessageDialog(rootPane, "Campo Código de Barras obrigatorio!");
                             tfCodigoBarras.requestFocus();
                         }
                     } else {
-                        JOptionPane.showMessageDialog(rootPane, "Campo Tipo de Uva obrigatório!");
+                        JOptionPane.showMessageDialog(rootPane, "Campo Tipo de Uva obrigatorio!");
                         tfTipoUva.requestFocus();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Campo Código de Barras obrigatório!");
+                    JOptionPane.showMessageDialog(rootPane, "Campo País de Origem obrigatorio!");
                     tfPaisOrigem.requestFocus();
                 }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Campo Preço obrigatório!");
+                JOptionPane.showMessageDialog(rootPane, "Campo Tipo de Vinhoobrigatorio!");
                 tfTipoVinho.requestFocus();
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Campo Nome obrigatório!");
+            JOptionPane.showMessageDialog(rootPane, "Campo Nome obrigatorio!");
             tfNome.requestFocus();
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnConfirmarKeyPressed
         if (evt.getKeyCode() == 10) {
@@ -256,10 +240,15 @@ public class CadastroProduto extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnConfirmarKeyPressed
 
-    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        setVisible(false);
-        dispose();
-    }//GEN-LAST:event_btnFecharActionPerformed
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        limpaCampos();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnLimparKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLimparKeyPressed
+        if (evt.getKeyCode() == 10) {
+            btnLimparActionPerformed(null);
+        }
+    }//GEN-LAST:event_btnLimparKeyPressed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         limpaCampos();
@@ -287,21 +276,6 @@ public class CadastroProduto extends javax.swing.JDialog {
         tfNome.requestFocus();
     }//GEN-LAST:event_CadastroProdutoComponentShown
 
-    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-         limpaCampos();
-    }//GEN-LAST:event_btnLimparActionPerformed
-
-    private void btnLimparKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnLimparKeyPressed
-         if (evt.getKeyCode() == 10) {
-            btnLimparActionPerformed(null);
-        }
-    }//GEN-LAST:event_btnLimparKeyPressed
-
-    private void closeIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeIconMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_closeIconMouseClicked
-
     public void limpaCampos() {
         tfNome.setText(null);
         tfPreco.setText(null);
@@ -323,59 +297,17 @@ public class CadastroProduto extends javax.swing.JDialog {
     public void enterToTab() {
         teclaEnter.add(AWTKeyStroke.getAWTKeyStroke(KeyEvent.VK_ENTER, 0));
         this.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, teclaEnter);
-        btnFechar.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, backup);
+        btnLimpar.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, backup);
         btnConfirmar.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, backup);
         btnNovo.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, backup);
     }
 
-   
-       public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-       java.awt.EventQueue.invokeLater(new Runnable() {
-	public void run() {
-		CadastroProduto dialog = new CadastroProduto(new javax.swing.JFrame(), true);
-		dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent e) {
-				System.exit(0);
-			}
-		});
-		dialog.setVisible(true);
-	}
-});
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CadastroProduto;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnNovo;
-    private javax.swing.JLabel closeIcon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbAviso;
     private javax.swing.JLabel lbCodigoBarras;
