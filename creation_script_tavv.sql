@@ -72,7 +72,7 @@ CREATE TABLE "endereco" (
 "estado" varchar(20) NOT NULL,
 "tipo_endereco" integer NOT NULL,
 "excluido" boolean NOT NULL,
-"fk_cliente_id" serial,
+"fk_cliente_id" int not null,
 PRIMARY KEY ("endereco_id") 
 )
 WITHOUT OIDS;

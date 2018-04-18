@@ -6,10 +6,14 @@
 package Banco;
 
 import Controller.Conexao;
+import Model.Endereco;
 import Model.PessoaFisica;
 import Model.PessoaJuridica;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,7 +30,32 @@ public class PessoaDAO {
     public PessoaDAO() {
     conn = Conexao.getConexao();
     }
+    
+    
+    private int proximoCodigo(){
+		String sql;
+		PreparedStatement ps;
+                ResultSet rs;
+		int proximoCodigo=0;
 
+		sql = "select max(cliente_id) from cliente";
+
+		try{
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+			if(rs.next()){
+				proximoCodigo = rs.getInt(1);
+			}
+			ps.close();
+                        return proximoCodigo;
+		}
+		catch(SQLException e){
+			JOptionPane.showMessageDialog(null, e.getMessage(),"Erro de Referencia", JOptionPane.ERROR_MESSAGE);
+		}
+		return 0;
+	}
+    
     public boolean inserirPessoaFisica(PessoaFisica cliente) {
         String sql;
         PreparedStatement ps;
@@ -42,8 +71,41 @@ public class PessoaDAO {
             ps.setBoolean(4, false);
             ps.execute();
             ps.close();
+            
+           return inserirEndereco(cliente.getEnderecos(), proximoCodigo());
+        } catch (SQLException e) {
+           JOptionPane.showMessageDialog(null,e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        } 
+        return false;
+    }
+
+       private boolean inserirEndereco(ArrayList<Endereco> enderecos, int chave) {
+        String sql;
+        PreparedStatement ps=null;
+        
+        
+        sql = "INSERT INTO endereco(logradouro,cep,numero,complemento,bairro,municipio,estado,tipo_endereco,excluido,fk_cliente_id) VALUES (?,?,?,?,?,?,?,?,?,?)";
+
+        try {
+            
+            for(Endereco end : enderecos){
+                
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, end.getLogradouro());
+            ps.setString(2, String.valueOf(end.getCep()));
+            ps.setInt(3, end.getNumero());
+            ps.setString(4, end.getComplemento());
+            ps.setString(5, end.getBairro());
+            ps.setString(6, end.getMunicipio());
+            ps.setString(7, end.getEstado());
+            ps.setInt(8, end.getTipoEndereco());
+            ps.setBoolean(9, false);
+            ps.setInt(10, chave);
+            ps.execute();     
+            } 
+            ps.close(); 
            return true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
            JOptionPane.showMessageDialog(null,e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
         } 
         return false;

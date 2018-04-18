@@ -17,12 +17,13 @@ import javax.swing.JOptionPane;
  * @author danie
  */
 public class CadastrarCliente extends javax.swing.JDialog {
-    
+
     private PessoaJuridica pj;
     private PessoaFisica pf;
     private Endereco end = new Endereco();
     private ArrayList<Endereco> enderecos = new ArrayList<Endereco>();
-    private PessoaDAO pDAO= new PessoaDAO();
+    private PessoaDAO pDAO = new PessoaDAO();
+
     /**
      * Creates new form NewJDialog
      */
@@ -325,7 +326,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
             }
         });
     }
-    
+
     //jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex())
     private void CadastrarPessoaFisica() {
         if (!jTf_Nome.getText().isEmpty()) {
@@ -338,31 +339,28 @@ public class CadastrarCliente extends javax.swing.JDialog {
                                     if (!jTF_cep.getText().isEmpty()) {
                                         if (!jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()).equals("- Selecione -")) {
                                             if (!jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("- Selecione -")) {
-                                                if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(rootPane,"Deseja adicionar algum endereço ?")){
-                                                    
-                                                
-                                                
-                                                }else{
-                                                    end.setLogradouro(jTF_Logradouro.getText());
-                                                    end.setNumero(Integer.parseInt(jTF_numero.getText()));
-                                                    end.setBairro(jTF_Bairro.getText());
-                                                    end.setComplemento(jTF_Complemento.getText());
-                                                    end.setCep(Integer.parseInt(jTF_cep.getText()));
-                                                    end.setEstado(jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()));
-                                                    if(jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("Residencial")){
-                                                    end.setTipoEndereco(1);
-                                                    }else{
-                                                    end.setTipoEndereco(2);
-                                                    }
-                                                    enderecos.add(end);
-                                                    pf= new PessoaFisica(jTF_cpf.getText(), jTf_Nome.getText(), enderecos,Double.valueOf(jTF_LimiteCredito.getText()));
-                                                    if(pDAO.inserirPessoaFisica(pf)){
-                                                        JOptionPane.showMessageDialog(rootPane,"Cliente salvo com sucesso!", "Mensagem",  JOptionPane.INFORMATION_MESSAGE);
-                                                    }else{
-                                                        JOptionPane.showMessageDialog(rootPane,"Erro ao salvar cliente", "Mensagem",  JOptionPane.ERROR_MESSAGE);
+                                                if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(rootPane, "Deseja adicionar algum endereço ?")) {
+
+                                                    AdicionarEndereco dialog = new AdicionarEndereco(new javax.swing.JDialog(), true);
+                                                    dialog.setLocationRelativeTo(null);
+                                                    dialog.setVisible(true);
+                                                    addEnderecosArray(dialog.getEnderecos());
+                                                   
+                                                    pf = new PessoaFisica(jTF_cpf.getText(), jTf_Nome.getText(), enderecos, Double.valueOf(jTF_LimiteCredito.getText()));
+
+                                                } else {
+
+                                                    enderecos.add(capturarEndereco());
+                                                    pf = new PessoaFisica(jTF_cpf.getText(), jTf_Nome.getText(), enderecos, Double.valueOf(jTF_LimiteCredito.getText()));
+                                                    if (pDAO.inserirPessoaFisica(pf)) {
+                                                        limparCampos();
+                                                        JOptionPane.showMessageDialog(rootPane, "Cliente salvo com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                                                        this.dispose();
+                                                    } else {
+                                                        JOptionPane.showMessageDialog(rootPane, "Erro ao salvar cliente", "Mensagem", JOptionPane.ERROR_MESSAGE);
 
                                                     }
-                         
+
                                                 }
                                             } else {
                                                 JOptionPane.showMessageDialog(rootPane, "Tipo de endereco e  obrigatorio!");
@@ -485,6 +483,43 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jTf_Nome.setEnabled(true);
         jCBoxTipoEndereco.setEnabled(true);
         jCBoxUf.setEnabled(true);
+    }
+
+    private void limparCampos() {
+
+        jTF_Bairro.setText(null);
+        jTF_Complemento.setText(null);
+        jTF_LimiteCredito.setText(null);
+        jTF_Logradouro.setText(null);
+        jTF_Municipio.setText(null);
+        jTF_NomeFantasia.setText(null);
+        jCBoxTipoEndereco.setSelectedIndex(0);
+        jTF_cep.setText(null);
+        jTF_cnpj.setText(null);
+        jTF_cpf.setText(null);
+        jTF_numero.setText(null);
+        jTf_Nome.setText(null);
+        jCBoxUf.setSelectedIndex(0);
+    }
+
+    private Endereco capturarEndereco() {
+        end.setLogradouro(jTF_Logradouro.getText());
+        end.setNumero(Integer.parseInt(jTF_numero.getText()));
+        end.setBairro(jTF_Bairro.getText());
+        end.setMunicipio(jTF_Municipio.getText());
+        end.setComplemento(jTF_Complemento.getText());
+        end.setCep(Integer.parseInt(jTF_cep.getText()));
+        end.setEstado(jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()));
+        if (jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("Residencial")) {
+            end.setTipoEndereco(1);
+        } else {
+            end.setTipoEndereco(2);
+        }
+        return end;
+    }
+    private void addEnderecosArray(ArrayList<Endereco> add){
+        enderecos= add;
+        enderecos.add(capturarEndereco());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

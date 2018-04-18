@@ -1,18 +1,25 @@
 package Interface;
 
+import Model.Endereco;
 import java.awt.AWTKeyStroke;
 import java.awt.Color;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.HashSet;
 import javax.swing.JOptionPane;
 
 public class AdicionarEndereco extends javax.swing.JDialog {
+    
+    private Endereco end;
+    private ArrayList<Endereco> enderecos= new ArrayList<>();
+    
+    
 
     HashSet backup = new HashSet(this.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
     HashSet teclaEnter = (HashSet) backup.clone();
 
-    public AdicionarEndereco(java.awt.Frame parent, boolean modal) {
+    public AdicionarEndereco(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -201,12 +208,20 @@ public class AdicionarEndereco extends javax.swing.JDialog {
                                     if (!jTF_cep.getText().isEmpty()) {
                                         if (!jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()).equals("- Selecione -")) {
                                             if (!jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("- Selecione -")) {
-                                                
-                                                
-                                                
-                                                
-                                                
-
+                                                int tipo;
+                                                if(jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("Residencial")){
+                                                    tipo=1;
+                                                }else{
+                                                    tipo=2;
+                                                }
+                                                end= new Endereco(jTF_Logradouro.getText(),Integer.parseInt(jTF_numero.getText()), tfComplemento.getText(), jTF_Bairro.getText(), jTF_Municipio.getText(), jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()),tipo);
+                                                enderecos.add(end);
+                                                if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(rootPane, "Endereco adicionado ao cliente. Deseja adicionar mais algum?")){
+                                                    limpaCampos();      
+                                                }else{
+                                                    this.dispose();
+                                                }
+               
                                             } else {
                                                 JOptionPane.showMessageDialog(rootPane, "Tipo de endereco e  obrigatorio!");
                                                 jCBoxTipoEndereco.requestFocus();
@@ -287,6 +302,8 @@ public class AdicionarEndereco extends javax.swing.JDialog {
         tfComplemento.setText(null);
         jTF_Bairro.setText(null);
         jTF_Municipio.setText(null);
+        jCBoxTipoEndereco.setSelectedIndex(0);
+        jCBoxUf.setSelectedIndex(0);
     }
 
     public void abilitaCampos(boolean status) {
@@ -317,8 +334,10 @@ public class AdicionarEndereco extends javax.swing.JDialog {
             lbAviso.setVisible(false);
         }
     }
-    
-   
+
+    public ArrayList<Endereco> getEnderecos() {
+        return enderecos;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CadastroCliente;
