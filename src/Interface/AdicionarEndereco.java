@@ -10,18 +10,22 @@ import java.util.HashSet;
 import javax.swing.JOptionPane;
 
 public class AdicionarEndereco extends javax.swing.JDialog {
-    
+
     private Endereco end;
-    private ArrayList<Endereco> enderecos= new ArrayList<>();
-    
-    
+    private ArrayList<Endereco> enderecos = new ArrayList<>();
 
     HashSet backup = new HashSet(this.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
     HashSet teclaEnter = (HashSet) backup.clone();
 
-    public AdicionarEndereco(javax.swing.JDialog parent, boolean modal) {
+    public AdicionarEndereco(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    public AdicionarEndereco(java.awt.Frame parent, boolean modal, Endereco end) {
+        super(parent, modal);
+        initComponents();
+        this.end = end;
     }
 
     @SuppressWarnings("unchecked")
@@ -51,7 +55,7 @@ public class AdicionarEndereco extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jCBoxTipoEndereco = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -194,62 +198,62 @@ public class AdicionarEndereco extends javax.swing.JDialog {
         jCBoxTipoEndereco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecione -", "Residencial", "Comercial" }));
         CadastroCliente.add(jCBoxTipoEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 190, -1));
 
-        getContentPane().add(CadastroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 900, 520));
+        getContentPane().add(CadastroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 520));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-       if (!jTF_Logradouro.getText().isEmpty()) {
-                        if (!jTF_numero.getText().isEmpty()) {
-                            if (!jTF_Bairro.getText().isEmpty()) {
-                                if (!jTF_Municipio.getText().isEmpty()) {
-                                    if (!jTF_cep.getText().isEmpty()) {
-                                        if (!jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()).equals("- Selecione -")) {
-                                            if (!jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("- Selecione -")) {
-                                                int tipo;
-                                                if(jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("Residencial")){
-                                                    tipo=1;
-                                                }else{
-                                                    tipo=2;
-                                                }
-                                                end= new Endereco(jTF_Logradouro.getText(),Integer.parseInt(jTF_numero.getText()), tfComplemento.getText(), jTF_Bairro.getText(), jTF_Municipio.getText(), jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()),tipo);
-                                                enderecos.add(end);
-                                                if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(rootPane, "Endereco adicionado ao cliente. Deseja adicionar mais algum?")){
-                                                    limpaCampos();      
-                                                }else{
-                                                    this.dispose();
-                                                }
-               
-                                            } else {
-                                                JOptionPane.showMessageDialog(rootPane, "Tipo de endereco e  obrigatorio!");
-                                                jCBoxTipoEndereco.requestFocus();
-                                            }
-                                        } else {
-                                            JOptionPane.showMessageDialog(rootPane, "UF e  obrigatorio!");
-                                            jCBoxUf.requestFocus();
-                                        }
+        if (!jTF_Logradouro.getText().isEmpty()) {
+            if (!jTF_numero.getText().isEmpty()) {
+                if (!jTF_Bairro.getText().isEmpty()) {
+                    if (!jTF_Municipio.getText().isEmpty()) {
+                        if (!jTF_cep.getText().isEmpty()) {
+                            if (!jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()).equals("- Selecione -")) {
+                                if (!jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("- Selecione -")) {
+                                    int tipo;
+                                    if (jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("Residencial")) {
+                                        tipo = 1;
                                     } else {
-                                        JOptionPane.showMessageDialog(rootPane, "Campo CEP e  obrigatorio!");
-                                        jTF_cep.requestFocus();
+                                        tipo = 2;
                                     }
+                                    end = new Endereco(jTF_Logradouro.getText(), Integer.parseInt(jTF_numero.getText()), tfComplemento.getText(), jTF_Bairro.getText(), jTF_Municipio.getText(), jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()), tipo);
+                                    enderecos.add(end);
+                                    if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(rootPane, "Endereco adicionado ao cliente. Deseja adicionar mais algum?")) {
+                                        limpaCampos();
+                                    } else {
+                                        this.dispose();
+                                    }
+
                                 } else {
-                                    JOptionPane.showMessageDialog(rootPane, "Campo Municipio e  obrigatorio!");
-                                    jTF_Municipio.requestFocus();
+                                    JOptionPane.showMessageDialog(rootPane, "Tipo de endereco e  obrigatorio!");
+                                    jCBoxTipoEndereco.requestFocus();
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(rootPane, "Campo Bairro e  obrigatorio!");
-                                jTF_Bairro.requestFocus();
+                                JOptionPane.showMessageDialog(rootPane, "UF e  obrigatorio!");
+                                jCBoxUf.requestFocus();
                             }
                         } else {
-                            JOptionPane.showMessageDialog(rootPane, "Campo Numero e obrigatorio!");
-                            jTF_numero.requestFocus();
+                            JOptionPane.showMessageDialog(rootPane, "Campo CEP e  obrigatorio!");
+                            jTF_cep.requestFocus();
                         }
                     } else {
-                        JOptionPane.showMessageDialog(rootPane, "Campo Logradouro e obrigatorio!");
-                        jTF_Logradouro.requestFocus();
+                        JOptionPane.showMessageDialog(rootPane, "Campo Municipio e  obrigatorio!");
+                        jTF_Municipio.requestFocus();
                     }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Campo Bairro e  obrigatorio!");
+                    jTF_Bairro.requestFocus();
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Campo Numero e obrigatorio!");
+                jTF_numero.requestFocus();
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Campo Logradouro e obrigatorio!");
+            jTF_Logradouro.requestFocus();
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
@@ -289,7 +293,7 @@ public class AdicionarEndereco extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNovoKeyTyped
 
     private void jTF_numeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTF_numeroFocusLost
-       lbAviso.setVisible(false);
+        lbAviso.setVisible(false);
     }//GEN-LAST:event_jTF_numeroFocusLost
 
     private void jTF_numeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTF_numeroKeyTyped
@@ -337,6 +341,46 @@ public class AdicionarEndereco extends javax.swing.JDialog {
 
     public ArrayList<Endereco> getEnderecos() {
         return enderecos;
+    }
+    
+      public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the dialog */
+       java.awt.EventQueue.invokeLater(new Runnable() {
+	public void run() {
+		AdicionarEndereco dialog = new AdicionarEndereco(new javax.swing.JFrame(), true);
+		dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent e) {
+				System.exit(0);
+			}
+		});
+		dialog.setVisible(true);
+	}
+});
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -268,7 +268,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
     private void jBtn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_SalvarActionPerformed
         // TODO add your handling code here:
         if (jRbPessoaJuridica.isSelected()) {
-
+           CadastrarPessoaJuridica();
         } else if (jRb_Pfisica.isSelected()) {
             CadastrarPessoaFisica();
         } else {
@@ -328,7 +328,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
     }
 
     //jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex())
-    private void CadastrarPessoaFisica() {
+   private void CadastrarPessoaFisica() {
         if (!jTf_Nome.getText().isEmpty()) {
             if (!jTF_cpf.getText().isEmpty()) {
                 if (!jTF_LimiteCredito.getText().isEmpty()) {
@@ -339,16 +339,18 @@ public class CadastrarCliente extends javax.swing.JDialog {
                                     if (!jTF_cep.getText().isEmpty()) {
                                         if (!jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()).equals("- Selecione -")) {
                                             if (!jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("- Selecione -")) {
-                                                if (JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(rootPane, "Deseja adicionar algum endereço ?")) {
+                                               int opcao= JOptionPane.showConfirmDialog(rootPane, "Deseja adicionar algum endereço ?");
+                                                
+                                                if (JOptionPane.YES_OPTION == opcao) {
 
-                                                    AdicionarEndereco dialog = new AdicionarEndereco(new javax.swing.JDialog(), true);
+                                                 AdicionarEndereco dialog = new AdicionarEndereco(new java.awt.Frame(), true);
                                                     dialog.setLocationRelativeTo(null);
                                                     dialog.setVisible(true);
-                                                    addEnderecosArray(dialog.getEnderecos());
+                                                    //addEnderecosArray(dialog.getEnderecos());
                                                    
                                                     pf = new PessoaFisica(jTF_cpf.getText(), jTf_Nome.getText(), enderecos, Double.valueOf(jTF_LimiteCredito.getText()));
 
-                                                } else {
+                                                }if (JOptionPane.NO_OPTION == opcao){
 
                                                     enderecos.add(capturarEndereco());
                                                     pf = new PessoaFisica(jTF_cpf.getText(), jTf_Nome.getText(), enderecos, Double.valueOf(jTF_LimiteCredito.getText()));
@@ -403,53 +405,101 @@ public class CadastrarCliente extends javax.swing.JDialog {
             jTf_Nome.requestFocus();
         }
     }
-
     private void CadastrarPessoaJuridica() {
-
-        if (!jTf_Nome.getText().isEmpty()) {
-            if (!jTF_NomeFantasia.getText().isEmpty()) {
-                if (!jTF_LimiteCredito.getText().isEmpty()) {
-                    if (!jTF_Logradouro.getText().isEmpty()) {
-                        if (!jTF_numero.getText().isEmpty()) {
-                            if (!jTF_Bairro.getText().isEmpty()) {
-                                if (!jTF_Municipio.getText().isEmpty()) {
-                                    if (!jTF_cep.getText().isEmpty()) {
-
+        
+        if (!jTF_cnpj.getText().isEmpty()) {
+            if (!jTf_Nome.getText().isEmpty()) {
+                if (!jTF_NomeFantasia.getText().isEmpty()) {
+                    if (!jTF_LimiteCredito.getText().isEmpty()) {
+                        if (!jTF_Logradouro.getText().isEmpty()) {
+                            if (!jTF_numero.getText().isEmpty()) {
+                                if (!jTF_Bairro.getText().isEmpty()) {
+                                    if (!jTF_Municipio.getText().isEmpty()) {
+                                        if (!jTF_cep.getText().isEmpty()) {
+                                            if (!jCBoxUf.getItemAt(jCBoxUf.getSelectedIndex()).equals("- Selecione -")) {
+                                                if (!jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex()).equals("- Selecione -")) {
+                                                    int opcao = JOptionPane.showConfirmDialog(rootPane, "Deseja adicionar algum endereço ?");
+                                                    if (JOptionPane.YES_OPTION == opcao) {
+                                                        
+                                                        AdicionarEndereco dialog = new AdicionarEndereco(new java.awt.Frame(), true);
+                                                        dialog.setLocationRelativeTo(null);
+                                                        dialog.setVisible(true);
+                                                        
+                                                        addEnderecosArray(dialog.getEnderecos());
+                                                        
+                                                        pj = new PessoaJuridica(jTF_NomeFantasia.getText(), jTF_cnpj.getText(), jTf_Nome.getText(), enderecos, Double.parseDouble(jTF_LimiteCredito.getText()));
+                                                        
+                                                        if (pDAO.inserirPessoaJuridica(pj)) {
+                                                            limparCampos();
+                                                            JOptionPane.showMessageDialog(rootPane, "Cliente salvo com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                                                            enderecos = null;
+                                                            this.dispose();
+                                                        } else {
+                                                            JOptionPane.showMessageDialog(rootPane, "Erro ao salvar cliente", "Mensagem", JOptionPane.ERROR_MESSAGE);
+                                                            
+                                                        }
+                                                        
+                                                    } else if (JOptionPane.NO_OPTION == opcao) {
+                                                        enderecos.add(capturarEndereco());
+                                                        pj = new PessoaJuridica(jTF_NomeFantasia.getText(), jTF_cnpj.getText(), jTf_Nome.getText(), enderecos, Double.parseDouble(jTF_LimiteCredito.getText()));
+                                                        if (pDAO.inserirPessoaJuridica(pj)) {
+                                                            limparCampos();
+                                                            JOptionPane.showMessageDialog(rootPane, "Cliente salvo com sucesso!", "Mensagem", JOptionPane.INFORMATION_MESSAGE);
+                                                            enderecos = null;
+                                                            this.dispose();
+                                                        } else {
+                                                            JOptionPane.showMessageDialog(rootPane, "Erro ao salvar cliente", "Mensagem", JOptionPane.ERROR_MESSAGE);
+                                                            
+                                                        }
+                                                        
+                                                    }
+                                                } else {
+                                                    JOptionPane.showMessageDialog(rootPane, "Tipo de endereco e  obrigatorio!");
+                                                    jCBoxTipoEndereco.requestFocus();
+                                                }
+                                            } else {
+                                                JOptionPane.showMessageDialog(rootPane, "UF e  obrigatorio!");
+                                                jCBoxUf.requestFocus();
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(rootPane, "Campo CEP e  obrigatorio!");
+                                            jTF_cep.requestFocus();
+                                        }
                                     } else {
-                                        JOptionPane.showMessageDialog(rootPane, "Campo CEP e  obrigatorio!");
-                                        jTF_cep.requestFocus();
+                                        JOptionPane.showMessageDialog(rootPane, "Campo Municipio e  obrigatorio!");
+                                        jTF_Municipio.requestFocus();
                                     }
                                 } else {
-                                    JOptionPane.showMessageDialog(rootPane, "Campo Municipio e  obrigatorio!");
-                                    jTF_Municipio.requestFocus();
+                                    JOptionPane.showMessageDialog(rootPane, "Campo Bairro e  obrigatorio!");
+                                    jTF_Bairro.requestFocus();
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(rootPane, "Campo Bairro e  obrigatorio!");
-                                jTF_Bairro.requestFocus();
+                                JOptionPane.showMessageDialog(rootPane, "Campo Numero e obrigatorio!");
+                                jTF_numero.requestFocus();
                             }
                         } else {
-                            JOptionPane.showMessageDialog(rootPane, "Campo Numero e obrigatorio!");
-                            jTF_numero.requestFocus();
+                            JOptionPane.showMessageDialog(rootPane, "Campo Logradouro e obrigatorio!");
+                            jTF_Logradouro.requestFocus();
                         }
                     } else {
-                        JOptionPane.showMessageDialog(rootPane, "Campo Logradouro e obrigatorio!");
-                        jTF_Logradouro.requestFocus();
+                        JOptionPane.showMessageDialog(rootPane, "Campo Limite de credito e obrigatorio!");
+                        jTF_LimiteCredito.requestFocus();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Campo Limite de credito e obrigatorio!");
-                    jTF_LimiteCredito.requestFocus();
+                    JOptionPane.showMessageDialog(rootPane, "Campo Nome fantasia e obrigatorio!");
+                    jTF_NomeFantasia.requestFocus();
                 }
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Campo Nome fantasia e obrigatorio!");
-                jTF_NomeFantasia.requestFocus();
+                JOptionPane.showMessageDialog(rootPane, "Campo Nome e obrigatorio!");
+                jTf_Nome.requestFocus();
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Campo Nome e obrigatorio!");
-            jTf_Nome.requestFocus();
+            JOptionPane.showMessageDialog(rootPane, "Campo CNPJ e obrigatorio!");
+            jTF_cnpj.requestFocus();
         }
-
+        
     }
-
+   
     private void desbloqueiaCampoFisica() {
         jTF_Bairro.setEnabled(true);
         jTF_Complemento.setEnabled(true);

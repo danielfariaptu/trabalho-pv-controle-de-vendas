@@ -32,7 +32,7 @@ public class PessoaDAO {
     }
     
     
-    private int proximoCodigo(){
+    private int chave(){
 		String sql;
 		PreparedStatement ps;
                 ResultSet rs;
@@ -72,7 +72,7 @@ public class PessoaDAO {
             ps.execute();
             ps.close();
             
-           return inserirEndereco(cliente.getEnderecos(), proximoCodigo());
+           return inserirEndereco(cliente.getEnderecos(), chave());
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(null,e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
         } 
@@ -105,6 +105,29 @@ public class PessoaDAO {
             } 
             ps.close(); 
            return true;
+        } catch (SQLException e) {
+           JOptionPane.showMessageDialog(null,e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
+        } 
+        return false;
+    }
+       public boolean inserirPessoaJuridica(PessoaJuridica cliente) {
+        String sql;
+        PreparedStatement ps;
+        
+        
+        sql = "INSERT INTO cliente(nome,nomefantasia,limite_de_credito,cnpj,excluido) VALUES (?,?,?,?,?)";
+
+        try {
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, cliente.getNome());
+            ps.setString(2, cliente.getNomeFantasia());
+            ps.setDouble(3, cliente.getLimiteCredito());
+            ps.setString(4, cliente.getCnpj());
+            ps.setBoolean(5, false);
+            ps.execute();
+            ps.close();
+            
+           return inserirEndereco(cliente.getEnderecos(), chave());
         } catch (SQLException e) {
            JOptionPane.showMessageDialog(null,e.getMessage(),"Erro",JOptionPane.ERROR_MESSAGE);
         } 
