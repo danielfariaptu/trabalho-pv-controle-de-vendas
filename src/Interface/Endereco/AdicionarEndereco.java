@@ -1,5 +1,7 @@
-package Interface;
+package Interface.Endereco;
 
+import Interface.Cliente.CadastrarCliente;
+import Interface.Validador;
 import Model.Endereco;
 import java.awt.AWTKeyStroke;
 import java.awt.Color;

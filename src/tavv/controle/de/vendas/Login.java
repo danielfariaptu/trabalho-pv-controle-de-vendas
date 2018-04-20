@@ -3,7 +3,7 @@ package tavv.controle.de.vendas;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
-import Controller.LoginDAO;
+import Login.LoginDAO;
 import java.awt.Color;
 
 import javax.swing.JFrame;
@@ -35,7 +35,6 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        overlay = new javax.swing.JPanel();
         JPanel = new javax.swing.JPanel();
         fieldNome = new javax.swing.JTextField();
         btnCadastrar = new javax.swing.JButton();
@@ -47,19 +46,14 @@ public class Login extends javax.swing.JFrame {
         labelSenha = new javax.swing.JLabel();
         btnSair = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
+        overlay = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login - Sistema Tabajara Atacado e Varejo de Vinhos");
         setPreferredSize(new java.awt.Dimension(640, 516));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        overlay.setBackground(new java.awt.Color(41, 30, 35));
-        overlay.setPreferredSize(new java.awt.Dimension(640, 487));
-        overlay.setRequestFocusEnabled(false);
-        overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 640, 500));
-
-        JPanel.setBackground(new java.awt.Color(41, 30, 35));
+        JPanel.setBackground(new java.awt.Color(0, 0, 51));
 
         fieldNome.setBackground(new java.awt.Color(227, 226, 242));
         fieldNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -200,6 +194,12 @@ public class Login extends javax.swing.JFrame {
         );
 
         getContentPane().add(JPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        overlay.setBackground(new java.awt.Color(0, 0, 51));
+        overlay.setPreferredSize(new java.awt.Dimension(640, 487));
+        overlay.setRequestFocusEnabled(false);
+        overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 640, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

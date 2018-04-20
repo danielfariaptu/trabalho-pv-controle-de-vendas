@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package Interface.Cliente;
 
 import Banco.PessoaDAO;
+import Interface.Endereco.AdicionarEndereco;
 import Model.Endereco;
 import Model.PessoaFisica;
 import Model.PessoaJuridica;
@@ -82,7 +83,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(41, 30, 35));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 1, true));
-        jPanel1.setForeground(new java.awt.Color(204, 204, 255));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         closeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-close-window-40.png"))); // NOI18N
@@ -115,7 +116,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
             }
         });
         jPanel2.add(jRb_Pfisica);
-        jRb_Pfisica.setBounds(18, 33, 129, 24);
+        jRb_Pfisica.setBounds(18, 33, 125, 27);
 
         jRbPessoaJuridica.setBackground(new java.awt.Color(41, 30, 35));
         buttonGroup1.add(jRbPessoaJuridica);
@@ -223,7 +224,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
         jLabel15.setText("Campos \"*\" sao obrigatorios");
         jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 560, 200, -1));
 
-        jBtn_Salvar.setBackground(new java.awt.Color(118, 135, 245));
+        jBtn_Salvar.setBackground(new java.awt.Color(255, 255, 255));
         jBtn_Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/disk.png"))); // NOI18N
         jBtn_Salvar.setMnemonic('S');
         jBtn_Salvar.setText("Salvar");
@@ -238,6 +239,11 @@ public class CadastrarCliente extends javax.swing.JDialog {
 
         jCBoxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecione -", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         jCBoxUf.setEnabled(false);
+        jCBoxUf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBoxUfActionPerformed(evt);
+            }
+        });
         jPanel1.add(jCBoxUf, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, 130, -1));
 
         jCBoxTipoEndereco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecione -", "Residencial", "Comercial" }));
@@ -283,6 +289,10 @@ public class CadastrarCliente extends javax.swing.JDialog {
     private void jRbPessoaJuridicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRbPessoaJuridicaActionPerformed
         desbloqueiaCampoJuridica();
     }//GEN-LAST:event_jRbPessoaJuridicaActionPerformed
+
+    private void jCBoxUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBoxUfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBoxUfActionPerformed
 
     /**
      * @param args the command line arguments

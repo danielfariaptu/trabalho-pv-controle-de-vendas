@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package Interface.Endereco;
 
 /**
  *
@@ -67,9 +67,9 @@ public class IncluirEndereco extends javax.swing.JFrame {
         label2.setForeground(new java.awt.Color(255, 255, 255));
         label2.setText("Informe o CPF/CNPJ do cliente*:");
         jPanel1.add(label2);
-        label2.setBounds(40, 120, 290, 19);
+        label2.setBounds(40, 120, 290, 20);
         jPanel1.add(jTFBusca);
-        jTFBusca.setBounds(40, 160, 300, 27);
+        jTFBusca.setBounds(40, 160, 300, 20);
 
         jPanel2.setBackground(new java.awt.Color(41, 30, 35));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Endereço", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 17), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -80,7 +80,7 @@ public class IncluirEndereco extends javax.swing.JFrame {
         lbLogradouro.setForeground(new java.awt.Color(255, 255, 255));
         lbLogradouro.setText(" Logradouro*");
         jPanel2.add(lbLogradouro);
-        lbLogradouro.setBounds(18, 48, 104, 17);
+        lbLogradouro.setBounds(18, 48, 95, 17);
         jPanel2.add(jTF_Logradouro);
         jTF_Logradouro.setBounds(20, 70, 650, 29);
 
@@ -89,7 +89,7 @@ public class IncluirEndereco extends javax.swing.JFrame {
         lbNumero.setForeground(new java.awt.Color(255, 255, 255));
         lbNumero.setText(" Numero*");
         jPanel2.add(lbNumero);
-        lbNumero.setBounds(690, 40, 74, 17);
+        lbNumero.setBounds(690, 40, 69, 17);
 
         jTF_numero.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -107,56 +107,56 @@ public class IncluirEndereco extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jTF_numero);
-        jTF_numero.setBounds(700, 70, 100, 27);
+        jTF_numero.setBounds(700, 70, 100, 20);
 
         jLabel9.setDisplayedMnemonic('b');
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText(" Bairro*");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(20, 120, 59, 17);
+        jLabel9.setBounds(20, 120, 55, 17);
         jPanel2.add(jTF_Bairro);
-        jTF_Bairro.setBounds(20, 140, 330, 27);
+        jTF_Bairro.setBounds(20, 140, 330, 20);
 
         jLabel2.setDisplayedMnemonic('P');
         jLabel2.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CEP*");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(380, 120, 33, 17);
+        jLabel2.setBounds(380, 120, 33, 19);
         jPanel2.add(jTF_cep);
-        jTF_cep.setBounds(380, 140, 240, 27);
+        jTF_cep.setBounds(380, 140, 240, 20);
 
         lbMunicipio.setDisplayedMnemonic('m');
         lbMunicipio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbMunicipio.setForeground(new java.awt.Color(255, 255, 255));
         lbMunicipio.setText(" Municipio*");
         jPanel2.add(lbMunicipio);
-        lbMunicipio.setBounds(670, 120, 86, 20);
+        lbMunicipio.setBounds(670, 120, 77, 20);
         jPanel2.add(jTF_Municipio);
-        jTF_Municipio.setBounds(670, 140, 220, 27);
+        jTF_Municipio.setBounds(670, 140, 220, 20);
 
         jbEstado.setDisplayedMnemonic('e');
         jbEstado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbEstado.setForeground(new java.awt.Color(255, 255, 255));
         jbEstado.setText(" Estado*");
         jPanel2.add(jbEstado);
-        jbEstado.setBounds(20, 190, 65, 17);
+        jbEstado.setBounds(20, 190, 61, 17);
 
         jCBoxUf.setMaximumRowCount(4);
         jCBoxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecione -", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         jPanel2.add(jCBoxUf);
-        jCBoxUf.setBounds(20, 210, 123, 27);
+        jCBoxUf.setBounds(20, 210, 84, 20);
 
         jLabel3.setFont(new java.awt.Font("Ubuntu", 1, 16)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Tipo de endereço*:");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(380, 180, 139, 20);
+        jLabel3.setBounds(380, 180, 145, 21);
 
         jCBoxTipoEndereco.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecione -", "Residencial", "Comercial" }));
         jPanel2.add(jCBoxTipoEndereco);
-        jCBoxTipoEndereco.setBounds(380, 210, 123, 27);
+        jCBoxTipoEndereco.setBounds(380, 210, 84, 20);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(30, 230, 930, 290);
@@ -164,7 +164,7 @@ public class IncluirEndereco extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/zoom.png"))); // NOI18N
         jButton1.setText("Buscar");
         jPanel1.add(jButton1);
-        jButton1.setBounds(370, 160, 90, 29);
+        jButton1.setBounds(370, 160, 90, 23);
 
         jButton3.setText("Adicionar");
         jPanel1.add(jButton3);

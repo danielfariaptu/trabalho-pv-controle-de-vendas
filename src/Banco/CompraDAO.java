@@ -15,7 +15,7 @@ public class CompraDAO {
 
     public CompraDAO() {
         try {
-            String url = "jdbc:postgresql://localhost:5432/clinica", usuario = "postgres", senha = "";
+            String url = "jdbc:postgresql://localhost:5432/clinica", usuario = "postgres", senha = "123321";
 
             Class.forName("org.postgresql.Driver");
 

@@ -6,7 +6,7 @@ import Criptografia.BCrypt;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
-import Controller.CadastroDAO;
+import Login.CadastroDAO;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -58,9 +58,8 @@ public class Cadastro extends javax.swing.JDialog{
         setIconImage(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        JPanel.setBackground(new java.awt.Color(41, 30, 35));
+        JPanel.setBackground(new java.awt.Color(0, 0, 51));
 
-        fieldNome.setBackground(new java.awt.Color(227, 226, 242));
         fieldNome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         fieldNome.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldNome.setBorder(null);
@@ -71,8 +70,7 @@ public class Cadastro extends javax.swing.JDialog{
         });
 
         btnSalvar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btnSalvar.setForeground(new java.awt.Color(51, 0, 51));
-        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/save.png"))); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-salvar-40.png"))); // NOI18N
         btnSalvar.setText("Salvar");
         btnSalvar.setBorder(null);
         btnSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -87,7 +85,6 @@ public class Cadastro extends javax.swing.JDialog{
         labelCadastroUsuario.setForeground(new java.awt.Color(255, 255, 255));
         labelCadastroUsuario.setText("Cadastro de Usuário");
 
-        fieldSenha.setBackground(new java.awt.Color(227, 226, 242));
         fieldSenha.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         fieldSenha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldSenha.setBorder(null);
@@ -117,9 +114,8 @@ public class Cadastro extends javax.swing.JDialog{
             }
         });
 
-        iconRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/registericon.png"))); // NOI18N
+        iconRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-adicionar-usuário-grupo-homem-mulher-64.png"))); // NOI18N
 
-        fieldSenhaConfirm.setBackground(new java.awt.Color(227, 226, 242));
         fieldSenhaConfirm.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         fieldSenhaConfirm.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fieldSenhaConfirm.setBorder(null);
@@ -143,36 +139,33 @@ public class Cadastro extends javax.swing.JDialog{
             .addGroup(JPanelLayout.createSequentialGroup()
                 .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPanelLayout.createSequentialGroup()
-                        .addGap(262, 262, 262)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(139, 139, 139)
+                        .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelSenha)
+                            .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(fieldNome)
+                                .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelUsuario)
+                            .addComponent(labelSenhaConfirm)
+                            .addComponent(fieldSenhaConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(JPanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(labelSenha)
-                                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(fieldNome)
-                                    .addComponent(fieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(labelUsuario)
-                                .addComponent(labelSenhaConfirm)
-                                .addComponent(fieldSenhaConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(JPanelLayout.createSequentialGroup()
-                                .addComponent(iconRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(labelCadastroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(262, 262, 262)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(iconRegistro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelCadastroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
         JPanelLayout.setVerticalGroup(
             JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPanelLayout.createSequentialGroup()
-                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(labelCadastroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(iconRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(21, 21, 21)
+                .addGroup(JPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelCadastroUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(iconRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
                 .addComponent(labelUsuario)
                 .addGap(8, 8, 8)
                 .addComponent(fieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)

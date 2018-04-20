@@ -3,8 +3,8 @@
 package tavv.controle.de.vendas;
 
 import Controle.GerenciaProduto;
-import Interface.CadastrarCliente;
-import Interface.CadastroProduto;
+import Interface.Cliente.CadastrarCliente;
+import Interface.Produto.CadastroProduto;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -32,35 +32,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
         overlay.setVisible(false);
         overlay.setBackground(new Color(51,34,94,80));
         
-        Navegation.setBackground(new Color(50,50,80,111));
+        Navegation.setBackground(new Color(0,0,51,111));
         
         PainelCliente.setVisible(false);
-        PainelCliente.setBackground(new Color(50,50,80,150));
-        ClienteTitle.setBackground(new Color(41,30,35));
+        PainelCliente.setBackground(new Color(0,0,51,111));
         
         PainelEndereco.setVisible(false);
-        PainelEndereco.setBackground(new Color(50,50,80,150));
-        EndTitle.setBackground(new Color(41,30,35));
+        PainelEndereco.setBackground(new Color(0,0,51,111));
         
         PainelCompra.setVisible(false);
-        PainelCompra.setBackground(new Color(50,50,80,150));
-        CompraTitle.setBackground(new Color(41,30,35));
+        PainelCompra.setBackground(new Color(0,0,51,111));
         
         PainelFatura.setVisible(false);
-        PainelFatura.setBackground(new Color(50,50,80,150));
-        FaturaTitle.setBackground(new Color(41,30,35));
+        PainelFatura.setBackground(new Color(0,0,51,111));
         
         PainelFatura.setVisible(false);
-        PainelFatura.setBackground(new Color(50,50,80,150));
-        FaturaTitle.setBackground(new Color(41,30,35));
+        PainelFatura.setBackground(new Color(0,0,51,111));
         
         PainelPagamento.setVisible(false);
-        PainelPagamento.setBackground(new Color(50,50,80,150));
-        PagTitle.setBackground(new Color(41,30,35));
+        PainelPagamento.setBackground(new Color(0,0,51,111));
         
         PainelProduto.setVisible(false);
-        PainelProduto.setBackground(new Color(50,50,80,150));
-        ProdTitle.setBackground(new Color(41,30,35));
+        PainelProduto.setBackground(new Color(0,0,51,111));
+        
+        PainelInicio.setVisible(false);
+        PainelInicio.setBackground(new Color(0,0,51,111));
         
     }
 
@@ -70,7 +66,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        overlay = new javax.swing.JPanel();
         Navegation = new javax.swing.JPanel();
         botaoPainelLogOut = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -186,23 +181,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
         botaoMostrarCli = new javax.swing.JPanel();
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
+        PainelInicio = new javax.swing.JPanel();
+        InicioTitle = new javax.swing.JPanel();
+        labelCliente1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        overlay = new javax.swing.JPanel();
         BotaoAlterar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal - TAVV ");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        overlay.setBackground(new java.awt.Color(41, 30, 35));
-        overlay.setPreferredSize(new java.awt.Dimension(1280, 800));
-        overlay.setRequestFocusEnabled(false);
-        overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 810));
-
         Navegation.setPreferredSize(new java.awt.Dimension(62, 500));
         Navegation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        botaoPainelLogOut.setBackground(new java.awt.Color(41, 30, 35));
-        botaoPainelLogOut.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 42, 36), 1, true));
+        botaoPainelLogOut.setBackground(new java.awt.Color(80, 77, 90));
+        botaoPainelLogOut.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(45, 42, 57), 1, true));
         botaoPainelLogOut.setForeground(new java.awt.Color(255, 255, 255));
         botaoPainelLogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botaoPainelLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -246,9 +240,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Navegation.add(botaoPainelLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 240, -1));
 
-        botaoPainelProduto.setBackground(new java.awt.Color(41, 30, 35));
-        botaoPainelProduto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 42, 36), 1, true));
+        botaoPainelProduto.setBackground(new java.awt.Color(80, 77, 90));
+        botaoPainelProduto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(45, 42, 57), 1, true));
         botaoPainelProduto.setForeground(new java.awt.Color(255, 255, 255));
+        botaoPainelProduto.setToolTipText("");
         botaoPainelProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botaoPainelProduto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -291,8 +286,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Navegation.add(botaoPainelProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 240, -1));
 
-        botaoPainelPagamento.setBackground(new java.awt.Color(41, 30, 35));
-        botaoPainelPagamento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 42, 36), 1, true));
+        botaoPainelPagamento.setBackground(new java.awt.Color(80, 77, 90));
+        botaoPainelPagamento.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(45, 42, 57), 1, true));
         botaoPainelPagamento.setForeground(new java.awt.Color(255, 255, 255));
         botaoPainelPagamento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botaoPainelPagamento.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -339,8 +334,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Navegation.add(botaoPainelPagamento, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 240, -1));
 
-        botaoPainelFatura.setBackground(new java.awt.Color(41, 30, 35));
-        botaoPainelFatura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 42, 36), 1, true));
+        botaoPainelFatura.setBackground(new java.awt.Color(80, 77, 90));
+        botaoPainelFatura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(45, 42, 57), 1, true));
         botaoPainelFatura.setForeground(new java.awt.Color(255, 255, 255));
         botaoPainelFatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botaoPainelFatura.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -384,8 +379,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Navegation.add(botaoPainelFatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 240, -1));
 
-        botaoPainelCompra.setBackground(new java.awt.Color(41, 30, 35));
-        botaoPainelCompra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 42, 36), 1, true));
+        botaoPainelCompra.setBackground(new java.awt.Color(80, 77, 90));
+        botaoPainelCompra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(45, 42, 57), 1, true));
         botaoPainelCompra.setForeground(new java.awt.Color(255, 255, 255));
         botaoPainelCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botaoPainelCompra.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -431,8 +426,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Navegation.add(botaoPainelCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 240, -1));
 
-        botaoPainelEndereco.setBackground(new java.awt.Color(41, 30, 35));
-        botaoPainelEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 42, 36), 1, true));
+        botaoPainelEndereco.setBackground(new java.awt.Color(80, 77, 90));
+        botaoPainelEndereco.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(45, 42, 57), 1, true));
         botaoPainelEndereco.setForeground(new java.awt.Color(255, 255, 255));
         botaoPainelEndereco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botaoPainelEndereco.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -478,8 +473,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Navegation.add(botaoPainelEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
-        botaoPainelCliente.setBackground(new java.awt.Color(41, 30, 35));
-        botaoPainelCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(62, 42, 36), 1, true));
+        botaoPainelCliente.setBackground(new java.awt.Color(80, 77, 90));
+        botaoPainelCliente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(45, 42, 57), 1, true));
         botaoPainelCliente.setForeground(new java.awt.Color(255, 255, 255));
         botaoPainelCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botaoPainelCliente.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -525,8 +520,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         Navegation.add(botaoPainelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 240, 70));
 
-        botaoInicio.setBackground(new java.awt.Color(41, 30, 35));
-        botaoInicio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
+        botaoInicio.setBackground(new java.awt.Color(80, 77, 90));
+        botaoInicio.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(45, 42, 57), 1, true));
         botaoInicio.setForeground(new java.awt.Color(255, 255, 255));
         botaoInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         botaoInicio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -576,7 +571,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelProduto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ProdTitle.setBackground(new java.awt.Color(41, 30, 35));
+        ProdTitle.setBackground(new java.awt.Color(80, 77, 90));
         ProdTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelPag.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -587,7 +582,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelProduto.add(ProdTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 810, 80));
 
-        botaoIncluirProd.setBackground(new java.awt.Color(41, 30, 35));
+        botaoIncluirProd.setBackground(new java.awt.Color(80, 77, 90));
         botaoIncluirProd.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoIncluirProd.setForeground(new java.awt.Color(255, 255, 255));
         botaoIncluirProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -608,7 +603,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelProduto.add(botaoIncluirProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 150, 70));
 
-        botaoAlterarProd.setBackground(new java.awt.Color(41, 30, 35));
+        botaoAlterarProd.setBackground(new java.awt.Color(80, 77, 90));
         botaoAlterarProd.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoAlterarProd.setForeground(new java.awt.Color(255, 255, 255));
         botaoAlterarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -629,7 +624,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelProduto.add(botaoAlterarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 150, 70));
 
-        botaoRemoverProd.setBackground(new java.awt.Color(41, 30, 35));
+        botaoRemoverProd.setBackground(new java.awt.Color(80, 77, 90));
         botaoRemoverProd.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoRemoverProd.setForeground(new java.awt.Color(255, 255, 255));
         botaoRemoverProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -670,7 +665,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelProduto.add(botaoRemoverProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, 70));
 
-        botaoMostrarProd.setBackground(new java.awt.Color(41, 30, 35));
+        botaoMostrarProd.setBackground(new java.awt.Color(80, 77, 90));
         botaoMostrarProd.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoMostrarProd.setForeground(new java.awt.Color(255, 255, 255));
         botaoMostrarProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -680,6 +675,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel74.setBackground(new java.awt.Color(80, 77, 90));
         jLabel74.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel74.setForeground(new java.awt.Color(255, 255, 255));
         jLabel74.setText("Mostrar");
@@ -715,7 +711,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelPagamento.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PagTitle.setBackground(new java.awt.Color(41, 30, 35));
+        PagTitle.setBackground(new java.awt.Color(80, 77, 90));
         PagTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelTitle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -726,7 +722,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelPagamento.add(PagTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 810, 80));
 
-        botaoIncluirPag.setBackground(new java.awt.Color(41, 30, 35));
+        botaoIncluirPag.setBackground(new java.awt.Color(80, 77, 90));
         botaoIncluirPag.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoIncluirPag.setForeground(new java.awt.Color(255, 255, 255));
         botaoIncluirPag.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -747,7 +743,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelPagamento.add(botaoIncluirPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 150, 70));
 
-        botaoAlterarPag.setBackground(new java.awt.Color(41, 30, 35));
+        botaoAlterarPag.setBackground(new java.awt.Color(80, 77, 90));
         botaoAlterarPag.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoAlterarPag.setForeground(new java.awt.Color(255, 255, 255));
         botaoAlterarPag.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -768,7 +764,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelPagamento.add(botaoAlterarPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 150, 70));
 
-        botaoRemoverPag.setBackground(new java.awt.Color(41, 30, 35));
+        botaoRemoverPag.setBackground(new java.awt.Color(80, 77, 90));
         botaoRemoverPag.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoRemoverPag.setForeground(new java.awt.Color(255, 255, 255));
         botaoRemoverPag.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -778,6 +774,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel64.setBackground(new java.awt.Color(80, 77, 90));
         jLabel64.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel64.setForeground(new java.awt.Color(255, 255, 255));
         jLabel64.setText("Remover");
@@ -809,7 +806,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelPagamento.add(botaoRemoverPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, 70));
 
-        botaoMostrarPag.setBackground(new java.awt.Color(41, 30, 35));
+        botaoMostrarPag.setBackground(new java.awt.Color(80, 77, 90));
         botaoMostrarPag.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoMostrarPag.setForeground(new java.awt.Color(255, 255, 255));
         botaoMostrarPag.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -854,7 +851,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelFatura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        FaturaTitle.setBackground(new java.awt.Color(41, 30, 35));
+        FaturaTitle.setBackground(new java.awt.Color(80, 77, 90));
         FaturaTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelCliente3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -865,7 +862,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelFatura.add(FaturaTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 810, 80));
 
-        botaoIncluirFatura.setBackground(new java.awt.Color(41, 30, 35));
+        botaoIncluirFatura.setBackground(new java.awt.Color(80, 77, 90));
         botaoIncluirFatura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoIncluirFatura.setForeground(new java.awt.Color(255, 255, 255));
         botaoIncluirFatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -886,7 +883,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelFatura.add(botaoIncluirFatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 150, 70));
 
-        botaoAlterarFatura.setBackground(new java.awt.Color(41, 30, 35));
+        botaoAlterarFatura.setBackground(new java.awt.Color(80, 77, 90));
         botaoAlterarFatura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoAlterarFatura.setForeground(new java.awt.Color(255, 255, 255));
         botaoAlterarFatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -907,7 +904,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelFatura.add(botaoAlterarFatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 150, 70));
 
-        botaoRemoverFatura.setBackground(new java.awt.Color(41, 30, 35));
+        botaoRemoverFatura.setBackground(new java.awt.Color(80, 77, 90));
         botaoRemoverFatura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoRemoverFatura.setForeground(new java.awt.Color(255, 255, 255));
         botaoRemoverFatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -948,7 +945,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelFatura.add(botaoRemoverFatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, 70));
 
-        botaoMostrarFatura.setBackground(new java.awt.Color(41, 30, 35));
+        botaoMostrarFatura.setBackground(new java.awt.Color(80, 77, 90));
         botaoMostrarFatura.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoMostrarFatura.setForeground(new java.awt.Color(255, 255, 255));
         botaoMostrarFatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -993,7 +990,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCompra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CompraTitle.setBackground(new java.awt.Color(41, 30, 35));
+        CompraTitle.setBackground(new java.awt.Color(80, 77, 90));
         CompraTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelCliente2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1004,7 +1001,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCompra.add(CompraTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 810, 80));
 
-        botaoIncluirCompra.setBackground(new java.awt.Color(41, 30, 35));
+        botaoIncluirCompra.setBackground(new java.awt.Color(80, 77, 90));
         botaoIncluirCompra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoIncluirCompra.setForeground(new java.awt.Color(255, 255, 255));
         botaoIncluirCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1025,7 +1022,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCompra.add(botaoIncluirCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 150, 70));
 
-        botaoAlterarCompra.setBackground(new java.awt.Color(41, 30, 35));
+        botaoAlterarCompra.setBackground(new java.awt.Color(80, 77, 90));
         botaoAlterarCompra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoAlterarCompra.setForeground(new java.awt.Color(255, 255, 255));
         botaoAlterarCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1046,7 +1043,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCompra.add(botaoAlterarCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 150, 70));
 
-        botaoRemoverCompra.setBackground(new java.awt.Color(41, 30, 35));
+        botaoRemoverCompra.setBackground(new java.awt.Color(80, 77, 90));
         botaoRemoverCompra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoRemoverCompra.setForeground(new java.awt.Color(255, 255, 255));
         botaoRemoverCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1087,7 +1084,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCompra.add(botaoRemoverCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, 70));
 
-        botaoMostrarCompra.setBackground(new java.awt.Color(41, 30, 35));
+        botaoMostrarCompra.setBackground(new java.awt.Color(80, 77, 90));
         botaoMostrarCompra.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoMostrarCompra.setForeground(new java.awt.Color(255, 255, 255));
         botaoMostrarCompra.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1132,7 +1129,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelEndereco.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        EndTitle.setBackground(new java.awt.Color(41, 30, 35));
+        EndTitle.setBackground(new java.awt.Color(80, 77, 90));
         EndTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelEnd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1143,7 +1140,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelEndereco.add(EndTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 810, 80));
 
-        botaoIncluirE.setBackground(new java.awt.Color(41, 30, 35));
+        botaoIncluirE.setBackground(new java.awt.Color(80, 77, 90));
         botaoIncluirE.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoIncluirE.setForeground(new java.awt.Color(255, 255, 255));
         botaoIncluirE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1164,7 +1161,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelEndereco.add(botaoIncluirE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 150, 70));
 
-        botaoAlterarE.setBackground(new java.awt.Color(41, 30, 35));
+        botaoAlterarE.setBackground(new java.awt.Color(80, 77, 90));
         botaoAlterarE.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoAlterarE.setForeground(new java.awt.Color(255, 255, 255));
         botaoAlterarE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1185,7 +1182,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelEndereco.add(botaoAlterarE, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 150, 70));
 
-        botaoRemoverE.setBackground(new java.awt.Color(41, 30, 35));
+        botaoRemoverE.setBackground(new java.awt.Color(80, 77, 90));
         botaoRemoverE.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoRemoverE.setForeground(new java.awt.Color(255, 255, 255));
         botaoRemoverE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1195,6 +1192,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jLabel40.setBackground(new java.awt.Color(80, 77, 90));
         jLabel40.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel40.setForeground(new java.awt.Color(255, 255, 255));
         jLabel40.setText("Remover");
@@ -1226,7 +1224,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelEndereco.add(botaoRemoverE, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, 70));
 
-        botaoMostrarE.setBackground(new java.awt.Color(41, 30, 35));
+        botaoMostrarE.setBackground(new java.awt.Color(80, 77, 90));
         botaoMostrarE.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoMostrarE.setForeground(new java.awt.Color(255, 255, 255));
         botaoMostrarE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1271,7 +1269,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ClienteTitle.setBackground(new java.awt.Color(41, 30, 35));
+        ClienteTitle.setBackground(new java.awt.Color(80, 77, 90));
         ClienteTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelCliente.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1282,7 +1280,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCliente.add(ClienteTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 810, 80));
 
-        botaoIncluirCli.setBackground(new java.awt.Color(41, 30, 35));
+        botaoIncluirCli.setBackground(new java.awt.Color(80, 77, 90));
         botaoIncluirCli.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoIncluirCli.setForeground(new java.awt.Color(255, 255, 255));
         botaoIncluirCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1303,7 +1301,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCliente.add(botaoIncluirCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 150, 70));
 
-        botaoAlterarCli.setBackground(new java.awt.Color(41, 30, 35));
+        botaoAlterarCli.setBackground(new java.awt.Color(80, 77, 90));
         botaoAlterarCli.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoAlterarCli.setForeground(new java.awt.Color(255, 255, 255));
         botaoAlterarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1324,7 +1322,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCliente.add(botaoAlterarCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 150, 70));
 
-        botaoRemoverCli.setBackground(new java.awt.Color(41, 30, 35));
+        botaoRemoverCli.setBackground(new java.awt.Color(80, 77, 90));
         botaoRemoverCli.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoRemoverCli.setForeground(new java.awt.Color(255, 255, 255));
         botaoRemoverCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1365,7 +1363,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         PainelCliente.add(botaoRemoverCli, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, 70));
 
-        botaoMostrarCli.setBackground(new java.awt.Color(41, 30, 35));
+        botaoMostrarCli.setBackground(new java.awt.Color(80, 77, 90));
         botaoMostrarCli.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 16, 63), 1, true));
         botaoMostrarCli.setForeground(new java.awt.Color(255, 255, 255));
         botaoMostrarCli.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1408,8 +1406,32 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(PainelCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 800, 530));
 
+        PainelInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        InicioTitle.setBackground(new java.awt.Color(80, 77, 90));
+        InicioTitle.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        labelCliente1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        labelCliente1.setForeground(new java.awt.Color(255, 255, 255));
+        labelCliente1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelCliente1.setText("INÍCIO");
+        InicioTitle.add(labelCliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(323, 11, 137, 38));
+
+        PainelInicio.add(InicioTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 810, 80));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logomarca.png"))); // NOI18N
+        PainelInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 640, 410));
+
+        getContentPane().add(PainelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 800, 530));
+
+        overlay.setBackground(new java.awt.Color(0, 0, 51));
+        overlay.setPreferredSize(new java.awt.Dimension(1280, 800));
+        overlay.setRequestFocusEnabled(false);
+        overlay.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(overlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, -1, 810));
+
         BotaoAlterar.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        BotaoAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/thumb-1920-352596 - Copia.jpg"))); // NOI18N
+        BotaoAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/liquor-store-back.jpg"))); // NOI18N
         BotaoAlterar.setLabelFor(BotaoAlterar);
         getContentPane().add(BotaoAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 800));
 
@@ -1418,13 +1440,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoPainelLogOutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelLogOutMouseEntered
         
-        botaoPainelLogOut.setBackground(new Color(84,58,59));
+        botaoPainelLogOut.setBackground(new Color(125, 116, 134));
         
     }//GEN-LAST:event_botaoPainelLogOutMouseEntered
 
     private void botaoPainelLogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelLogOutMouseExited
         
-        botaoPainelLogOut.setBackground(new Color(41,30,35));
+        botaoPainelLogOut.setBackground(new Color(80,77,90));
        
     }//GEN-LAST:event_botaoPainelLogOutMouseExited
 
@@ -1439,7 +1461,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoPainelProdutoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelProdutoMouseClicked
         refazCor();
-        botaoPainelProduto.setBackground(new Color(77,46,79));
+        botaoPainelProduto.setBackground(new Color(30, 28,46));
         resetaMenu();
         zeraCount();
         b7 = 1;
@@ -1448,19 +1470,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoPainelProdutoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelProdutoMouseEntered
        if (b7 != 1){
-           botaoPainelProduto.setBackground(new Color(84,58,59));
+           botaoPainelProduto.setBackground(new Color(125, 116, 134));
        }
     }//GEN-LAST:event_botaoPainelProdutoMouseEntered
 
     private void botaoPainelProdutoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelProdutoMouseExited
         if(b7 !=1 ){
-            botaoPainelProduto.setBackground(new Color(41,30,35));
+            botaoPainelProduto.setBackground(new Color(80,77,90));
         }
     }//GEN-LAST:event_botaoPainelProdutoMouseExited
 
     private void botaoPainelPagamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelPagamentoMouseClicked
          refazCor();
-        botaoPainelPagamento.setBackground(new Color(77,46,79));
+        botaoPainelPagamento.setBackground(new Color(30, 28,46));
         resetaMenu();
         zeraCount();
         b6 = 1;
@@ -1469,19 +1491,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoPainelPagamentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelPagamentoMouseEntered
         if(b6 !=1){
-        botaoPainelPagamento.setBackground(new Color(84,58,59));
+        botaoPainelPagamento.setBackground(new Color(125, 116, 134));
         }
     }//GEN-LAST:event_botaoPainelPagamentoMouseEntered
 
     private void botaoPainelPagamentoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelPagamentoMouseExited
         if(b6 != 1){
-        botaoPainelPagamento.setBackground(new Color(41,30,35));
+        botaoPainelPagamento.setBackground(new Color(80,77,90));
         }
     }//GEN-LAST:event_botaoPainelPagamentoMouseExited
 
     private void botaoPainelFaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelFaturaMouseClicked
          refazCor();
-        botaoPainelFatura.setBackground(new Color(77,46,79));
+        botaoPainelFatura.setBackground(new Color(30, 28,46));
         resetaMenu();
         zeraCount();
         b5 = 1;
@@ -1491,19 +1513,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void botaoPainelFaturaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelFaturaMouseEntered
        
         if(b5 != 1){
-            botaoPainelFatura.setBackground(new Color(84,58,59));
+            botaoPainelFatura.setBackground(new Color(125, 116, 134));
         }
     }//GEN-LAST:event_botaoPainelFaturaMouseEntered
 
     private void botaoPainelFaturaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelFaturaMouseExited
         if(b5 != 1){
-            botaoPainelFatura.setBackground(new Color(41,30,35));
+            botaoPainelFatura.setBackground(new Color(80,77,90));
         }
     }//GEN-LAST:event_botaoPainelFaturaMouseExited
 
     private void botaoPainelCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelCompraMouseClicked
          refazCor();
-        botaoPainelCompra.setBackground(new Color(77,46,79));
+        botaoPainelCompra.setBackground(new Color(30, 28,46));
         resetaMenu();
         zeraCount();
         b4 = 1;
@@ -1512,19 +1534,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoPainelCompraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelCompraMouseEntered
        if(b4 != 1){
-           botaoPainelCompra.setBackground(new Color(84,58,59));
+           botaoPainelCompra.setBackground(new Color(125, 116, 134));
        }
     }//GEN-LAST:event_botaoPainelCompraMouseEntered
 
     private void botaoPainelCompraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelCompraMouseExited
        if(b4 != 1){
-        botaoPainelCompra.setBackground(new Color(41,30,35));
+        botaoPainelCompra.setBackground(new Color(80,77,90));
     }
     }//GEN-LAST:event_botaoPainelCompraMouseExited
 
     private void botaoPainelEnderecoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelEnderecoMouseClicked
         refazCor();
-        botaoPainelEndereco.setBackground(new Color(77,46,79));
+        botaoPainelEndereco.setBackground(new Color(30, 28,46));
         resetaMenu();
         zeraCount();
         b3 = 1;
@@ -1533,20 +1555,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoPainelEnderecoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelEnderecoMouseEntered
        if(b3 != 1){
-           botaoPainelEndereco.setBackground(new Color(84,58,59));
+           botaoPainelEndereco.setBackground(new Color(125, 116, 134));
        }
     }//GEN-LAST:event_botaoPainelEnderecoMouseEntered
 
     private void botaoPainelEnderecoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelEnderecoMouseExited
        if(b3 != 1){
-           botaoPainelEndereco.setBackground(new Color(41,30,35));
+           botaoPainelEndereco.setBackground(new Color(80,77,90));
        }
     }//GEN-LAST:event_botaoPainelEnderecoMouseExited
 
     private void botaoPainelClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelClienteMouseClicked
        
         refazCor();
-        botaoPainelCliente.setBackground(new Color(77,46,79));
+        botaoPainelCliente.setBackground(new Color(30, 28,46));
         resetaMenu();
         zeraCount();
         b2 = 1;
@@ -1555,13 +1577,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoPainelClienteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelClienteMouseEntered
        if(b2 != 1){
-           botaoPainelCliente.setBackground(new Color(84,58,59));
+           botaoPainelCliente.setBackground(new Color(125, 116, 134));
        }
     }//GEN-LAST:event_botaoPainelClienteMouseEntered
 
     private void botaoPainelClienteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoPainelClienteMouseExited
        if(b2 != 1){
-           botaoPainelCliente.setBackground(new Color(41,30,35));
+           botaoPainelCliente.setBackground(new Color(80,77,90));
        }
     }//GEN-LAST:event_botaoPainelClienteMouseExited
 
@@ -1573,18 +1595,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void botaoInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoInicioMouseEntered
         if(b1 != 1){
-            botaoInicio.setBackground(new Color(84,58,59));
+            botaoInicio.setBackground(new Color(125, 116, 134));
         }
     }//GEN-LAST:event_botaoInicioMouseEntered
 
     private void botaoInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoInicioMouseClicked
         
         refazCor();
-        botaoInicio.setBackground(new Color(77,46,79));
+        botaoInicio.setBackground(new Color(30, 28,46));
         resetaMenu();
         zeraCount();
         b1 = 1;
-        //PainelInicio.setVisible(true);
+        PainelInicio.setVisible(true);
     }//GEN-LAST:event_botaoInicioMouseClicked
 
     private void botaoMostrarCliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoMostrarCliMouseClicked
@@ -1699,15 +1721,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         PainelFatura.setVisible(false);
         PainelPagamento.setVisible(false);
         PainelProduto.setVisible(false);
+        PainelInicio.setVisible(false);
     }
     public void refazCor(){        
-        botaoInicio.setBackground(new Color(41,30,35));
-        botaoPainelCliente.setBackground(new Color(41,30,35));
-        botaoPainelEndereco.setBackground(new Color(41,30,35));
-        botaoPainelCompra.setBackground(new Color(41,30,35));
-        botaoPainelFatura.setBackground(new Color(41,30,35));
-        botaoPainelPagamento.setBackground(new Color(41,30,35));
-        botaoPainelProduto.setBackground(new Color(41,30,35));
+        botaoInicio.setBackground(new Color(80,77,90));
+        botaoPainelCliente.setBackground(new Color(80,77,90));
+        botaoPainelEndereco.setBackground(new Color(80,77,90));
+        botaoPainelCompra.setBackground(new Color(80,77,90));
+        botaoPainelFatura.setBackground(new Color(80,77,90));
+        botaoPainelPagamento.setBackground(new Color(80,77,90));
+        botaoPainelProduto.setBackground(new Color(80,77,90));
     }
     public void zeraCount(){
         b1=0;
@@ -1758,12 +1781,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel CompraTitle;
     private javax.swing.JPanel EndTitle;
     private javax.swing.JPanel FaturaTitle;
+    private javax.swing.JPanel InicioTitle;
     private javax.swing.JPanel Navegation;
     private javax.swing.JPanel PagTitle;
     private javax.swing.JPanel PainelCliente;
     private javax.swing.JPanel PainelCompra;
     private javax.swing.JPanel PainelEndereco;
     private javax.swing.JPanel PainelFatura;
+    private javax.swing.JPanel PainelInicio;
     private javax.swing.JPanel PainelPagamento;
     private javax.swing.JPanel PainelProduto;
     private javax.swing.JPanel ProdTitle;
@@ -1799,6 +1824,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel botaoRemoverFatura;
     private javax.swing.JPanel botaoRemoverPag;
     private javax.swing.JPanel botaoRemoverProd;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -1864,6 +1890,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel labelCliente;
+    private javax.swing.JLabel labelCliente1;
     private javax.swing.JLabel labelCliente2;
     private javax.swing.JLabel labelCliente3;
     private javax.swing.JLabel labelEnd;

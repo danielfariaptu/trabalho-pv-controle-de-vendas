@@ -15,7 +15,7 @@ public class ProdutoDAO {
 
     public ProdutoDAO() {
         try {
-            String url = "jdbc:postgresql://localhost:5432/tavv", usuario = "postgres", senha = "";
+            String url = "jdbc:postgresql://localhost:5432/tavv", usuario = "postgres", senha = "123321";
 
             Class.forName("org.postgresql.Driver");
 

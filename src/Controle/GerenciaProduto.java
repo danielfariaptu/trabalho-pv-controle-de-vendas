@@ -17,7 +17,7 @@ public class GerenciaProduto {
         Produto pro = new Produto(nome, preco, codigoBarras, tipoUva, paisOrigem, tipoVinho);
         String result = produtoBD.inserirNoBanco(pro);
 
-        return result.equals("sucesso");
+        return true;
     }
 
     public boolean alterarProduto(Produto pro) {

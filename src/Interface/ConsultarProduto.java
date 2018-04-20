@@ -1,5 +1,6 @@
 package Interface;
 
+import Interface.Produto.AlterarProduto;
 import Controle.GerenciaProduto;
 import Model.Produto;
 import Interface.NewTableModel;

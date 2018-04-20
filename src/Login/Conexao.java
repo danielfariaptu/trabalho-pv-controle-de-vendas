@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller;
+package Login;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +23,7 @@ public class Conexao {
 			
 			Properties prop= new Properties();
 			prop.put("user", "postgres");
-			prop.put("password", "12345");
+			prop.put("password", "123321");
 			prop.put("charset", "UTF-8");
 			prop.put("lc_type", "ISO8859_1");
 			

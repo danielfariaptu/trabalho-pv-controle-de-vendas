@@ -5,7 +5,7 @@
  */
 package Banco;
 
-import Controller.Conexao;
+import Login.Conexao;
 import Model.Endereco;
 import Model.PessoaFisica;
 import Model.PessoaJuridica;

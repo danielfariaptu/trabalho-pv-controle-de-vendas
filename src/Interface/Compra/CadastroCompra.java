@@ -1,25 +1,23 @@
-package Interface;
+package Interface.Compra;
 
-import Controle.GerenciaPagamento;
+import Controle.GerenciaCompra;
 import java.awt.AWTKeyStroke;
 import java.awt.Color;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
-import javax.swing.text.MaskFormatter;
 
-public class Pagamento extends javax.swing.JDialog {
+public class CadastroCompra extends javax.swing.JDialog {
 
     HashSet backup = new HashSet(this.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
     HashSet teclaEnter = (HashSet) backup.clone();
-    GerenciaPagamento gpa;
+    GerenciaCompra gcom;
 
-    public Pagamento(java.awt.Frame parent, boolean modal, GerenciaPagamento gpa) {
+    public CadastroCompra(java.awt.Frame parent, boolean modal, GerenciaCompra gcom) {
         super(parent, modal);
         initComponents();
-        this.gpa = gpa;
+        this.gcom = gcom;
     }
 
     @SuppressWarnings("unchecked")
@@ -28,14 +26,6 @@ public class Pagamento extends javax.swing.JDialog {
 
         CadastroProduto = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        tfData = new javax.swing.JTextField();
-        tfTipo = new javax.swing.JTextField();
-        tfValor = new javax.swing.JTextField();
-        tfJuros = new javax.swing.JTextField();
-        lbData = new javax.swing.JLabel();
-        lbTipo = new javax.swing.JLabel();
-        lbValor = new javax.swing.JLabel();
-        lbJuros = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lbAviso = new javax.swing.JLabel();
@@ -57,49 +47,8 @@ public class Pagamento extends javax.swing.JDialog {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Pagamento");
-        CadastroProduto.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 270, 43));
-
-        tfData.setNextFocusableComponent(tfValor);
-        tfData.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfDataKeyTyped(evt);
-            }
-        });
-        CadastroProduto.add(tfData, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 300, 29));
-
-        tfTipo.setNextFocusableComponent(tfJuros);
-        CadastroProduto.add(tfTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 300, 29));
-        CadastroProduto.add(tfValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 300, 29));
-        CadastroProduto.add(tfJuros, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 300, 29));
-
-        lbData.setDisplayedMnemonic('d');
-        lbData.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbData.setForeground(new java.awt.Color(255, 255, 255));
-        lbData.setLabelFor(lbData);
-        lbData.setText("DATA:");
-        CadastroProduto.add(lbData, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
-
-        lbTipo.setDisplayedMnemonic('t');
-        lbTipo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbTipo.setForeground(new java.awt.Color(255, 255, 255));
-        lbTipo.setLabelFor(tfTipo);
-        lbTipo.setText("TIPO:");
-        CadastroProduto.add(lbTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, -1, 20));
-
-        lbValor.setDisplayedMnemonic('v');
-        lbValor.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbValor.setForeground(new java.awt.Color(255, 255, 255));
-        lbValor.setLabelFor(tfValor);
-        lbValor.setText("VALOR:");
-        CadastroProduto.add(lbValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
-
-        lbJuros.setDisplayedMnemonic('j');
-        lbJuros.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbJuros.setForeground(new java.awt.Color(255, 255, 255));
-        lbJuros.setLabelFor(tfJuros);
-        lbJuros.setText("JUROS:");
-        CadastroProduto.add(lbJuros, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 170, -1, -1));
+        jLabel1.setText("CADASTRO DE COMPRA");
+        CadastroProduto.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 350, 43));
 
         btnConfirmar.setBackground(new java.awt.Color(102, 102, 102));
         btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/trabalhoedwar/imagens/confirmar_1.png"))); // NOI18N
@@ -157,14 +106,14 @@ public class Pagamento extends javax.swing.JDialog {
         });
         CadastroProduto.add(btnNovo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 140, 60));
 
-        getContentPane().add(CadastroProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 450));
+        getContentPane().add(CadastroProduto, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 910, 450));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-
+ 
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -191,7 +140,7 @@ public class Pagamento extends javax.swing.JDialog {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         limpaCampos();
         abilitaCampos(true);
-        tfData.requestFocus();
+       // tfNome.requestFocus();
         btnNovo.setEnabled(false);
         btnConfirmar.setEnabled(true);
     }//GEN-LAST:event_btnNovoActionPerformed
@@ -211,25 +160,15 @@ public class Pagamento extends javax.swing.JDialog {
         abilitaCampos(true);
         btnNovo.setEnabled(false);
         btnConfirmar.setEnabled(true);
-        tfData.requestFocus();
+        //tfNome.requestFocus();
     }//GEN-LAST:event_CadastroProdutoComponentShown
 
-    private void tfDataKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfDataKeyTyped
-        
-    }//GEN-LAST:event_tfDataKeyTyped
-
     public void limpaCampos() {
-        tfData.setText(null);
-        tfValor.setText(null);
-        tfTipo.setText(null);
-        tfJuros.setText(null);
+        
     }
 
     public void abilitaCampos(boolean status) {
-        tfData.setEnabled(status);
-        tfValor.setEnabled(status);
-        tfTipo.setEnabled(status);
-        tfJuros.setEnabled(status);
+        
     }
 
     public void enterToTab() {
@@ -239,8 +178,7 @@ public class Pagamento extends javax.swing.JDialog {
         btnConfirmar.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, backup);
         btnNovo.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, backup);
     }
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CadastroProduto;
     private javax.swing.JButton btnCancelar;
@@ -249,13 +187,5 @@ public class Pagamento extends javax.swing.JDialog {
     private javax.swing.JButton btnNovo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbAviso;
-    private javax.swing.JLabel lbData;
-    private javax.swing.JLabel lbJuros;
-    private javax.swing.JLabel lbTipo;
-    private javax.swing.JLabel lbValor;
-    private javax.swing.JTextField tfData;
-    private javax.swing.JTextField tfJuros;
-    private javax.swing.JTextField tfTipo;
-    private javax.swing.JTextField tfValor;
     // End of variables declaration//GEN-END:variables
 }

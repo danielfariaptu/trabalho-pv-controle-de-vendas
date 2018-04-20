@@ -1,4 +1,4 @@
-package Interface;
+package Interface.Produto;
 
 import Controle.GerenciaProduto;
 import Model.Produto;
