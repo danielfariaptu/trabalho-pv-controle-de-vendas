@@ -65,10 +65,10 @@ public class CadastroProduto extends javax.swing.JDialog {
         CadastroProduto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CADASTRO DE PRODUTO");
-        CadastroProduto.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 350, 43));
+        CadastroProduto.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 350, 43));
 
         lbAviso.setForeground(new java.awt.Color(255, 255, 255));
         lbAviso.setText("Os campos marcados com * são obrigatórios.");
@@ -87,7 +87,6 @@ public class CadastroProduto extends javax.swing.JDialog {
 
         tfPreco.setNextFocusableComponent(tfCodigoBarras);
         CadastroProduto.add(tfPreco, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 300, 29));
-
         CadastroProduto.add(tfPaisOrigem, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 300, 29));
         CadastroProduto.add(tfCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 300, 29));
 
@@ -133,7 +132,7 @@ public class CadastroProduto extends javax.swing.JDialog {
 
         btnFechar.setBackground(new java.awt.Color(255, 255, 255));
         btnFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-cancelar-32.png"))); // NOI18N
-        btnFechar.setText("Fechar");
+        btnFechar.setText("Cancelar");
         btnFechar.setFocusPainted(false);
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,7 +296,8 @@ public class CadastroProduto extends javax.swing.JDialog {
         tfPreco.setText(null);
         tfCodigoBarras.setText(null);
         tfPaisOrigem.setText(null);
-        
+        JCBoxUva.setSelectedIndex(0);
+        JCBoxVinho.setSelectedIndex(0);
     }
 
     public void habilitaCampos(boolean status) {

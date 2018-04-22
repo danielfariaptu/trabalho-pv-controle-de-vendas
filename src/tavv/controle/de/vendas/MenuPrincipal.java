@@ -3,8 +3,8 @@
 package tavv.controle.de.vendas;
 
 import Controle.GerenciaProduto;
-import Interface.Cliente.CadastrarCliente;
-import Interface.Produto.CadastroProduto;
+import Interface.Cliente.*;
+import Interface.Produto.*;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -1702,7 +1702,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoIncluirProdMouseClicked
 
     private void botaoAlterarProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoAlterarProdMouseClicked
-        // TODO add your handling code here:
+        AlterarProduto dialog = new AlterarProduto(this, true,gp);
+        dialog.setLocationRelativeTo(null);
+        overlay.setVisible(true);
+	dialog.setVisible(true);
+        overlay.setVisible(false);
     }//GEN-LAST:event_botaoAlterarProdMouseClicked
 
     private void botaoRemoverProdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botaoRemoverProdMouseClicked

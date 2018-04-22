@@ -5,11 +5,12 @@ import Model.Produto;
 import java.util.ArrayList;
 
 public class GerenciaProduto {
-
+ArrayList<Produto> prod = new ArrayList<Produto>();
     private ProdutoDAO produtoBD;
 
     public GerenciaProduto() {
         produtoBD = new ProdutoDAO();
+        
     }
 
     public boolean cadastrarProduto(String nome, double preco, String codigoBarras, String tipoUva, String paisOrigem, String tipoVinho) {
@@ -58,5 +59,9 @@ public class GerenciaProduto {
     public Produto acharProduto(int i) {
         Produto p = (Produto) relatorioProduto().get(i);
         return p;
+    }
+    
+    public ArrayList<Produto> getProdutos(){
+        return prod;
     }
 }

@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author danie
  */
-public class CadastrarCliente extends javax.swing.JDialog {
+public class AlterarCliente extends javax.swing.JDialog {
 
     private PessoaJuridica pj;
     private PessoaFisica pf;
@@ -28,7 +28,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
     /**
      * Creates new form NewJDialog
      */
-    public CadastrarCliente(javax.swing.JDialog parent, boolean modal) {
+    public AlterarCliente(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -94,11 +94,11 @@ public class CadastrarCliente extends javax.swing.JDialog {
                 closeIconMouseClicked(evt);
             }
         });
-        jPanel1.add(closeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, -1, -1));
+        jPanel1.add(closeIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("CADASTRO DE CLIENTE");
+        jLabel1.setText("ALTERAR CLIENTE");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 230, -1));
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 51));
@@ -223,20 +223,20 @@ public class CadastrarCliente extends javax.swing.JDialog {
 
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Campos \"*\" sao obrigatorios");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 200, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 200, -1));
 
         jBtn_Salvar.setBackground(new java.awt.Color(255, 255, 255));
         jBtn_Salvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-ok-32.png"))); // NOI18N
-        jBtn_Salvar.setMnemonic('S');
-        jBtn_Salvar.setText("Salvar");
+        jBtn_Salvar.setMnemonic('A');
+        jBtn_Salvar.setText("Alterar");
         jBtn_Salvar.setToolTipText("Salva os registros");
         jBtn_Salvar.setFocusPainted(false);
         jBtn_Salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtn_SalvarActionPerformed(evt);
+                jBtn_AlterarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBtn_Salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 630, 120, 40));
+        jPanel1.add(jBtn_Salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 620, 120, 40));
 
         jCBoxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "- Selecione -", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         jCBoxUf.setEnabled(false);
@@ -262,7 +262,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
                 jBtn_LimparActionPerformed(evt);
             }
         });
-        jPanel1.add(jBtn_Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 630, 120, 40));
+        jPanel1.add(jBtn_Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 620, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -285,16 +285,16 @@ public class CadastrarCliente extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_closeIconMouseClicked
 
-    private void jBtn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_SalvarActionPerformed
+    private void jBtn_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_AlterarActionPerformed
         // TODO add your handling code here:
         if (jRbPessoaJuridica.isSelected()) {
-           CadastrarPessoaJuridica();
+           AlterarPessoaJuridica();
         } else if (jRb_Pfisica.isSelected()) {
-            CadastrarPessoaFisica();
+            AlterarPessoaFisica();
         } else {
             JOptionPane.showMessageDialog(null, "Informe o tipo de cliente!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jBtn_SalvarActionPerformed
+    }//GEN-LAST:event_jBtn_AlterarActionPerformed
 
     private void jRb_PfisicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRb_PfisicaActionPerformed
         desbloqueiaCampoFisica();
@@ -309,7 +309,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jCBoxUfActionPerformed
 
     private void jBtn_LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtn_LimparActionPerformed
-       limparCampos();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jBtn_LimparActionPerformed
 
     /**
@@ -329,21 +329,23 @@ public class CadastrarCliente extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastrarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AlterarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                CadastrarCliente dialog = new CadastrarCliente(new javax.swing.JDialog(), true);
+                AlterarCliente dialog = new AlterarCliente(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -356,7 +358,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
     }
 
     //jCBoxTipoEndereco.getItemAt(jCBoxTipoEndereco.getSelectedIndex())
-   private void CadastrarPessoaFisica() {
+   private void AlterarPessoaFisica() {
         if (!jTf_Nome.getText().isEmpty()) {
             if (!jTF_cpf.getText().isEmpty()) {
                 if (!jTF_LimiteCredito.getText().isEmpty()) {
@@ -433,7 +435,7 @@ public class CadastrarCliente extends javax.swing.JDialog {
             jTf_Nome.requestFocus();
         }
     }
-    private void CadastrarPessoaJuridica() {
+    private void AlterarPessoaJuridica() {
         
         if (!jTF_cnpj.getText().isEmpty()) {
             if (!jTf_Nome.getText().isEmpty()) {

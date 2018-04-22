@@ -1,6 +1,5 @@
 package Interface;
 
-import Interface.Produto.AlterarProduto;
 import Controle.GerenciaProduto;
 import Model.Produto;
 import Interface.NewTableModel;
@@ -158,8 +157,7 @@ public class ConsultarProduto extends javax.swing.JDialog {
         }else{
             TableModel tm = tabelaConsulta.getModel();
             Produto produto = gp.retornaProduto((tm.getValueAt(tabelaConsulta.getSelectedRow(), 0).toString()));
-            AlterarProduto menuAlterarProduto = new AlterarProduto(this, true, gp, produto);
-            menuAlterarProduto.setVisible(true);
+            
         }
 
         tbDadosOnShow();

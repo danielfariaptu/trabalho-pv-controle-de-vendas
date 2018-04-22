@@ -1,5 +1,6 @@
 package Banco;
 
+import Login.Conexao;
 import Model.Produto;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,22 +9,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
+/*
+
+public class CadastroDAO {
+
+    private PreparedStatement statement;
+    private ResultSet resultSet;
+    private BCrypt BCrypt;
+    private Integer cont = 1;
+    private Boolean verificaSenha;
+    private Connection conn;
+    
+    public CadastroDAO() {
+              conn= Conexao.getConexao();
+
+
+    }
+
+*/
 public class ProdutoDAO {
 
     private Connection con;
     private Statement stm;
 
     public ProdutoDAO() {
-        try {
-            String url = "jdbc:postgresql://localhost:5432/tavv", usuario = "postgres", senha = "123321";
-
-            Class.forName("org.postgresql.Driver");
-
-            con = DriverManager.getConnection(url, usuario, senha);
-            stm = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Erro: " + e.getMessage());
-        }
+        con = Conexao.getConexao();
     }
 
     public String inserirNoBanco(Produto pro) {
